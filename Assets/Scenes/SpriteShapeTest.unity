@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Spline:
     m_IsOpenEnded: 1
     m_ControlPoints:
-    - position: {x: -4.62691, y: 4.804492, z: 0}
+    - position: {x: -14.379964, y: -1.5475025, z: 0}
       leftTangent: {x: 0, y: 0, z: 0}
       rightTangent: {x: 0, y: 0, z: 0}
       mode: 0
@@ -165,8 +165,8 @@ MonoBehaviour:
       corner: 1
       m_CornerMode: 1
     - position: {x: -2.3152719, y: 1.6045647, z: 0}
-      leftTangent: {x: -2.2196484, y: -0.1445825, z: -0}
-      rightTangent: {x: 2.7085547, y: 0.17642868, z: 0}
+      leftTangent: {x: -11.352304, y: -7.8235645, z: 0}
+      rightTangent: {x: 2.6140635, y: 1.8015103, z: -0}
       mode: 1
       height: 1
       spriteIndex: 0
@@ -188,15 +188,15 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-    - position: {x: 13.421894, y: -0.65272284, z: 0}
-      leftTangent: {x: -4.2183084, y: 2.0176382, z: 0}
+    - position: {x: 20.258808, y: 3.3611422, z: 0}
+      leftTangent: {x: -5.805455, y: 2.576868, z: 0}
       rightTangent: {x: 0, y: 0, z: 0}
       mode: 2
       height: 1
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-  m_SpriteShape: {fileID: 11400000, guid: 1ab01c64b1dac4d5986065a53babc580, type: 2}
+  m_SpriteShape: {fileID: 11400000, guid: 1f120aa2ca7bf4f1bb040e4a48536853, type: 2}
   m_FillPixelPerUnit: 100
   m_StretchTiling: 1
   m_SplineDetail: 8
@@ -257,9 +257,9 @@ SpriteShapeRenderer:
   m_SortingOrder: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_MaskInteraction: 0
-  m_ShapeTexture: {fileID: 2800000, guid: 65076ac1be0de42dfadf9bc2e5861bea, type: 3}
+  m_ShapeTexture: {fileID: 2800000, guid: 3c5565656584545078d753b30145d7e7, type: 3}
   m_Sprites:
-  - {fileID: 21300000, guid: 65076ac1be0de42dfadf9bc2e5861bea, type: 3}
+  - {fileID: 21300000, guid: 3c5565656584545078d753b30145d7e7, type: 3}
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
@@ -269,8 +269,8 @@ SpriteShapeRenderer:
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   m_LocalAABB:
-    m_Center: {x: 6.711126, y: 0.72252417, z: 0}
-    m_Extent: {x: 12.676742, y: 5.1399956, z: 0}
+    m_Center: {x: 5.9994736, y: 0.5885606, z: 0}
+    m_Extent: {x: 22.387653, y: 4.7872133, z: 0}
   m_SpriteSortPoint: 0
 --- !u!4 &1282048566
 Transform:
