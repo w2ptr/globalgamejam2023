@@ -49,7 +49,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1264488989568963717}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -153,6 +153,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 6578669053414108811}
     m_Modifications:
     - target: {fileID: 4453761987653379662, guid: 62137dfddf4a51240a9993607cb8177c,
@@ -210,12 +211,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7601948493421758046, guid: 62137dfddf4a51240a9993607cb8177c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9115344936017181074, guid: 62137dfddf4a51240a9993607cb8177c,
         type: 3}
       propertyPath: m_Name
       value: brench left
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 62137dfddf4a51240a9993607cb8177c, type: 3}
 --- !u!4 &2584892036523094884 stripped
 Transform:

@@ -2,21 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class PlayerController : MonoBehaviour
 {
     public GameObject rootPrefab;
     public GameObject movingRootPrefab;
     public GameObject lastRoot;
-    public int playerNr = 1;
+    public int playerNr = 0;
     public GameObject leftBrenchPrefab;
     public GameObject rightBrenchPrefab;
 
-
-
     private Transform nextSpawn;
     private GameObject tempSpawn;
-
 
     private int rootCounter = 0;
 
@@ -56,13 +52,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
     public void createRoot()
     {
         tempSpawn = Instantiate(rootPrefab, lastRoot.transform.position, lastRoot.transform.rotation, transform);
         Destroy(lastRoot);
         nextSpawn = tempSpawn.transform.Find("nextTarget");
         lastRoot = Instantiate(movingRootPrefab, nextSpawn.transform.position, nextSpawn.transform.rotation, transform);
+
+        var trailTarget = GameObject.FindGameObjectWithTag("Player" + playerNr + "RootFinal");
+        trailTarget.transform.position = lastRoot.transform.position;
 
         rootCounter += 1;
 
@@ -73,7 +71,7 @@ public class PlayerController : MonoBehaviour
 
         if (rootCounter == 3)
         {
-            movingBrenches = GameObject.FindGameObjectsWithTag("Player"+ playerNr+"Brench");
+            movingBrenches = GameObject.FindGameObjectsWithTag("Player" + playerNr + "Brench");
 
             for (int i = 0; i < movingBrenches.Length; i++)
             {
@@ -86,11 +84,7 @@ public class PlayerController : MonoBehaviour
         {
             rootCounter = 0;
         }
-
-
-
     }
-
 
     public void createBrenches()
     {

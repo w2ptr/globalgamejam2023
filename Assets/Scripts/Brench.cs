@@ -30,4 +30,14 @@ public class Brench : MonoBehaviour
         nextSpawn = tempSpawn.transform.Find("nextTarget");
         lastRoot = Instantiate(movingRootPrefab, nextSpawn.transform.position, nextSpawn.transform.rotation, transform);
     }
+    
+    void OnDrawGizmos()
+    {
+        // DEBUG
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, 0.5f);
+
+        // Gizmos.color = Color.red;
+        // Gizmos.DrawWireSphere(pos, 0.4f);
+    }
 }
