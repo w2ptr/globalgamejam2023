@@ -10,13 +10,14 @@ public class PlayerController : MonoBehaviour
     public int playerNr = 0;
     public GameObject leftBrenchPrefab;
     public GameObject rightBrenchPrefab;
+    public Transform trailTarget;
 
     private Transform nextSpawn;
     private GameObject tempSpawn;
 
     private int rootCounter = 0;
 
-    private GameObject[] movingBrenches;
+    private GameObject[] movingBranches;
 
     // Start is called before the first frame update
     void Start()
@@ -59,24 +60,24 @@ public class PlayerController : MonoBehaviour
         nextSpawn = tempSpawn.transform.Find("nextTarget");
         lastRoot = Instantiate(movingRootPrefab, nextSpawn.transform.position, nextSpawn.transform.rotation, transform);
 
-        var trailTarget = GameObject.FindGameObjectWithTag("Player" + playerNr + "RootFinal");
         trailTarget.transform.position = lastRoot.transform.position;
 
         rootCounter += 1;
 
-        if (rootCounter == 6)
+        if (rootCounter == 6) // split off
         {
-            createBrenches();
+            createBranch(leftBrenchPrefab);
+            createBranch(rightBrenchPrefab);
         }
 
-        if (rootCounter == 3)
+        if (rootCounter == 3) // build onto side branches
         {
-            movingBrenches = GameObject.FindGameObjectsWithTag("Player" + playerNr + "Brench");
+            movingBranches = GameObject.FindGameObjectsWithTag("Player" + playerNr + "Brench");
 
-            for (int i = 0; i < movingBrenches.Length; i++)
+            for (int i = 0; i < movingBranches.Length; i++)
             {
-                Brench tempBrench = movingBrenches[i].GetComponent("Brench") as Brench;
-                tempBrench.growBrench();
+                Brench tempBranch = movingBranches[i].GetComponent<Brench>();
+                tempBranch.growBranch();
             }
         }
 
@@ -86,9 +87,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void createBrenches()
+    public void createBranch(GameObject branchPrefab)
     {
-        Instantiate(leftBrenchPrefab, lastRoot.transform.position, lastRoot.transform.rotation, transform);
-        Instantiate(rightBrenchPrefab, lastRoot.transform.position, lastRoot.transform.rotation, transform);
+        Instantiate(branchPrefab, lastRoot.transform.position, lastRoot.transform.rotation, transform);
     }
 }

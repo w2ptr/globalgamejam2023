@@ -7,6 +7,7 @@ public class MovingBrench : MonoBehaviour
     public int targetCounter = 1;
     public int playerNr = 0;
     public Transform target;
+    public Transform trailTarget;
 
     // Start is called before the first frame update
     void Start()

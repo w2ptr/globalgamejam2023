@@ -30,7 +30,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4964279594841234015}
   m_Father: {fileID: 6578669053414108811}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -92,11 +93,73 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1264488989568963717}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &5997878791100756371
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4964279594841234015}
+  - component: {fileID: 8025025578188679526}
+  m_Layer: 0
+  m_Name: trail_target
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4964279594841234015
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5997878791100756371}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4595606916821687438}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8025025578188679526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5997878791100756371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bb98de92d813ed429855976a1ba8e87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forceCoef: 0
+  snapshotDistance: 1
+  rootRadius: 2
+  rootCount: 4
+  possibleColors: []
+  expandQuickness: 3
+  trailMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  endWidth: 0.18
+  startWidth: 0.07
+  minVertexDistance: 0.3
 --- !u!1 &7408022732449391310
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,12 +211,13 @@ MonoBehaviour:
   movingRootPrefab: {fileID: 9115344936017181074, guid: 62137dfddf4a51240a9993607cb8177c,
     type: 3}
   lastRoot: {fileID: 6958523899721280696}
+  trailTarget: {fileID: 4964279594841234015}
 --- !u!1001 &2166672818438559018
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TransformParent: {fileID: 6578669053414108811}
     m_Modifications:
     - target: {fileID: 4453761987653379662, guid: 62137dfddf4a51240a9993607cb8177c,
@@ -222,7 +286,9 @@ PrefabInstance:
       value: brench left
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62137dfddf4a51240a9993607cb8177c, type: 3}
 --- !u!4 &2584892036523094884 stripped
 Transform:

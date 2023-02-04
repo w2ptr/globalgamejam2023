@@ -7,6 +7,7 @@ public class Brench : MonoBehaviour
     public GameObject rootPrefab;
     public GameObject movingRootPrefab;
     public GameObject lastRoot;
+    public Transform trailTarget;
 
     private Transform nextSpawn;
     private GameObject tempSpawn;
@@ -23,21 +24,13 @@ public class Brench : MonoBehaviour
         
     }
 
-    public void growBrench()
+    public void growBranch()
     {
         tempSpawn = Instantiate(rootPrefab, lastRoot.transform.position, lastRoot.transform.rotation, transform);
         Destroy(lastRoot);
         nextSpawn = tempSpawn.transform.Find("nextTarget");
         lastRoot = Instantiate(movingRootPrefab, nextSpawn.transform.position, nextSpawn.transform.rotation, transform);
-    }
-    
-    void OnDrawGizmos()
-    {
-        // DEBUG
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, 0.5f);
 
-        // Gizmos.color = Color.red;
-        // Gizmos.DrawWireSphere(pos, 0.4f);
+        trailTarget.position = nextSpawn.transform.position;
     }
 }

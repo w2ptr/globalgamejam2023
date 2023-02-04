@@ -9,7 +9,7 @@ public class RootController : MonoBehaviour
     public float forceCoef;
     public float snapshotDistance = 1.0f;
     public float rootRadius = 2.0f;
-    public int rootCount;
+    public int rootCount = 4;
     public Color[] possibleColors;
     public float expandQuickness = 3.0f;
 
