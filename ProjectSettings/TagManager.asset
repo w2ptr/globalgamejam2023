@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - NextTarget
+  - Player1Target2
+  - Player1Target1
+  - Player1TargetCenter
+  - Player1Brench
+  - Player2Brench
+  - Player2TargetCenter
+  - Player2Target1
+  - Player2Target2
   layers:
   - Default
   - TransparentFX
@@ -13,7 +22,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - PostProcessing
   - 
   - 
   - 
