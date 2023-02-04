@@ -19,20 +19,41 @@ namespace GlobalGameJam2023
         public float WidthOffset = 0.0f;
 
         /// <summary>
+        /// The scale of the transform
+        /// </summary>
+        public float Scale = 0.1f;
+
+        /// <summary>
+        /// World scale Y position
+        /// </summary>
+        public float Height = 0.5f;
+
+        /// <summary>
         /// Constant for making sure the spline does not stop rendering
         /// (even if one of the points has a Height of 0.0f, the entire spline
         /// disappears)
         /// </summary>
         private const float k_MinimumSplineWidth = 0.01f;
 
+        /// <summary>
+        /// To make sure the InserPointAt doesn't fail (Point too close to neighbour error)
+        /// </summary>
+        private const float k_MinimumLocalPositionDistance = 0.05f;
+
+        private const float k_GizmoSphereScale = 0.1f;
+
         [System.Serializable]
         public struct Point
         {
             public float Width;
-            public Vector3 Position; // world space coordinates, perpendicular to object. 
+
+            /// <summary>
+            /// World space coordinates, perpendicular to object. 
+            /// </summary>
+            public Vector3 Position; 
         }
 
-        [SerializeField] private List<Point> _points;
+        public List<Point> Points;
 
         private void Awake()
         {
@@ -42,10 +63,22 @@ namespace GlobalGameJam2023
             }
         }
 
+        private void Start()
+        {
+            SetTransform();
+        }
+
         private void Update()
         {
-            SetPoints(_points);
+            SetPoints(Points);
             SetCurve();
+        }
+
+        private void SetTransform()
+        {
+            transform.localPosition = new Vector3(0f, Height, 0f);
+            transform.localRotation = Quaternion.Euler(90f, 0f, 0f);
+            transform.localScale = Vector3.one * Scale;
         }
 
         private void SetCurve()
@@ -54,6 +87,18 @@ namespace GlobalGameJam2023
             for (int i = 0; i < splinePointCount; i++)
             {
                 _spriteShapeController.spline.SetTangentMode(i, ShapeTangentMode.Continuous);
+                //_spriteShapeController.spline.SetLeftTangent
+            }
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+
+            for (int i=0; i<Points.Count; i++)
+            {
+                Vector3 worldSpacePosition = Points[i].Position;
+                Gizmos.DrawSphere(worldSpacePosition, k_GizmoSphereScale);
             }
         }
 
@@ -74,17 +119,18 @@ namespace GlobalGameJam2023
             // Add points
             if (points.Count > splinePointCount)
             {
-                //_spriteShapeController.spline.InsertPointAt(splinePointCount, )
-                for (int i=splinePointCount-1; i < points.Count-1; i++)
+                Debug.Log("Should add points");
+                for (int i=splinePointCount; i < points.Count; i++)
                 {
                     Debug.Log($"Added point at {i}");
-                    _spriteShapeController.spline.InsertPointAt(i, points[i].Position);
+                    _spriteShapeController.spline.InsertPointAt(i, GetLocalPosition(i, points[i].Position));
                 }
             }
 
             // Remove points
             if (points.Count < splinePointCount)
             {
+                Debug.Log("Should remove points");
                 for (int i=splinePointCount-1; i > points.Count-1; i--)
                 {
                     Debug.Log($"Removed point at {i}");
@@ -96,13 +142,40 @@ namespace GlobalGameJam2023
             int count = points.Count;
             for (int i=0; i<count; i++)
             {
-                _spriteShapeController.spline.SetPosition(i, points[i].Position);
+                _spriteShapeController.spline.SetPosition(i, GetLocalPosition(i, points[i].Position));
                 float width = WidthOffset + points[i].Width;
                 width = Mathf.Clamp(width, k_MinimumSplineWidth, Mathf.Infinity);
                 _spriteShapeController.spline.SetHeight(i, width);
             }
 
             Debug.Log(_spriteShapeController.spline.GetPointCount());
+        }
+
+        /// <summary>
+        /// Cnverts the curve from world space to local space
+        /// </summary>
+        private Vector2 GetLocalPosition(int index, Vector3 worldSpacePosition)
+        {
+            Vector2 xy = new Vector2(worldSpacePosition.x, worldSpacePosition.z);
+            Vector2 scaled = xy / Scale;
+            Vector2 localPosition = scaled;
+
+            //Debug.Log($"Getting local{index}");
+            if (index > 0)
+            {
+                //Debug.Log("Should check");
+                // Make sure the point gets offset if they come too close
+                Vector3 previousLocalPointPosition = _spriteShapeController.spline.GetPosition(index-1);
+                float distance = Vector3.Distance(localPosition, previousLocalPointPosition);
+                if (distance < k_MinimumLocalPositionDistance)
+                {
+                    localPosition = new Vector2(localPosition.x, localPosition.y + k_MinimumLocalPositionDistance - distance);
+                    //Debug.Log(localPosition);
+                }
+            }
+            
+
+            return localPosition;
         }
     }
 
