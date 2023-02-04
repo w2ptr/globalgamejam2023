@@ -35,6 +35,8 @@ namespace GlobalGameJam2023
         /// </summary>
         private const float k_MinimumSplineWidth = 0.01f;
 
+        public float CurveScaleOffset = 1.0f;
+
         /// <summary>
         /// To make sure the InserPointAt doesn't fail (Point too close to neighbour error)
         /// </summary>
@@ -65,11 +67,12 @@ namespace GlobalGameJam2023
 
         private void Start()
         {
-            SetTransform();
+            
         }
 
         private void Update()
         {
+            SetTransform();
             SetPoints(Points);
             SetCurve();
         }
@@ -83,11 +86,26 @@ namespace GlobalGameJam2023
 
         private void SetCurve()
         {
-            int splinePointCount = _spriteShapeController.spline.GetPointCount();
+            Spline spline = _spriteShapeController.spline;
+
+            int splinePointCount = spline.GetPointCount();
             for (int i = 0; i < splinePointCount; i++)
             {
-                _spriteShapeController.spline.SetTangentMode(i, ShapeTangentMode.Continuous);
-                //_spriteShapeController.spline.SetLeftTangent
+                spline.SetTangentMode(i, ShapeTangentMode.Continuous);
+
+                Vector3 point = spline.GetPosition(i);
+                Vector3 previousPoint = i > 0 ? spline.GetPosition(i - 1) : point;
+                Vector3 nextPoint = i < splinePointCount - 1 ? spline.GetPosition(i + 1) : point;
+
+                float scale = CurveScaleOffset; /// Scale;
+                float leftControlPointScale = scale * Vector3.Distance(point, previousPoint);
+                float rightControlPointScale = scale * Vector3.Distance(point, nextPoint);
+
+                SplineUtility.CalculateTangents(point, previousPoint, nextPoint, Vector3.up, leftControlPointScale, out Vector3 _, out Vector3 leftTangent);
+                SplineUtility.CalculateTangents(point, previousPoint, nextPoint, Vector3.up, rightControlPointScale, out Vector3 rightTangent, out Vector3 _);
+
+                _spriteShapeController.spline.SetLeftTangent(i, leftTangent);
+                _spriteShapeController.spline.SetRightTangent(i, rightTangent);
             }
         }
 
