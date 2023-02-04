@@ -14,10 +14,13 @@ public class Corpse : MonoBehaviour
         transform.localScale = Vector3.one * howMuchBlood;
     }
 
-    void OnCollisionEnter(Collision collision)
+
+    void OnTriggerEnter(Collider thing)
     {
         //Do sound
-        eatSounds[Random.Range(0, eatSounds.Count)].Play();
+        //eatSounds[Random.Range(0, eatSounds.Count)].Play();
+
+        Debug.Log("Corpse hit");
 
         //Create particle effect
         int particleChoice = Random.Range(0, particleEffects.Count);
