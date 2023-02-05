@@ -13,6 +13,7 @@ public class Menu : MonoBehaviour
         "Level_2_entwined",
         "Level_3_TwinValley",
         "Level_4_QuatroCarnivoria",
+        "SpriteShapeTest",
     };
 
     void Start()
@@ -33,7 +34,6 @@ public class Menu : MonoBehaviour
     public void StartGame()
     {
         int level = PlayerPrefs.GetInt("mapSelection", 0);
-        // SceneManager.LoadScene(levels[level]);
-        SceneManager.LoadScene("SpriteShapeTest");
+        SceneManager.LoadScene(levels[level]);
     }
 }

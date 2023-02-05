@@ -14,20 +14,20 @@ public class SettingsMenu : MonoBehaviour
     public GameObject overlayC;
     public GameObject optionD;
     public GameObject overlayD;
+    public GameObject optionE;
+    public GameObject overlayE;
 
-    private List<GameObject> options = new List<GameObject>();
-    private List<GameObject> overlays = new List<GameObject>();
+    private List<GameObject> options;
+    private List<GameObject> overlays;
 
     void Start()
     {
-        options.Add(optionA);
-        options.Add(optionB);
-        options.Add(optionC);
-        options.Add(optionD);
-        overlays.Add(overlayA);
-        overlays.Add(overlayB);
-        overlays.Add(overlayC);
-        overlays.Add(overlayD);
+        options = new List<GameObject>() {
+            optionA, optionB, optionC, optionD, optionE,
+        };
+        overlays = new List<GameObject>() {
+            overlayA, overlayB, overlayC, overlayD, overlayE,
+        };
         
         for (var i = 0; i < options.Count; i++)
         {
