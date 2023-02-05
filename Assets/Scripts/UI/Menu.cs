@@ -33,6 +33,7 @@ public class Menu : MonoBehaviour
     public void StartGame()
     {
         int level = PlayerPrefs.GetInt("mapSelection", 0);
-        SceneManager.LoadScene(levels[level]);
+        // SceneManager.LoadScene(levels[level]);
+        SceneManager.LoadScene("SpriteShapeTest");
     }
 }
