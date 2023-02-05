@@ -137,10 +137,10 @@ namespace GlobalGameJam2023
             // Add points
             if (points.Count > splinePointCount)
             {
-                Debug.Log("Should add points");
+                //Debug.Log("Should add points");
                 for (int i=splinePointCount; i < points.Count; i++)
                 {
-                    Debug.Log($"Added point at {i}");
+                    //Debug.Log($"Added point at {i}");
                     _spriteShapeController.spline.InsertPointAt(i, GetLocalPosition(i, points[i].Position));
                 }
             }
@@ -148,10 +148,10 @@ namespace GlobalGameJam2023
             // Remove points
             if (points.Count < splinePointCount)
             {
-                Debug.Log("Should remove points");
+                //Debug.Log("Should remove points");
                 for (int i=splinePointCount-1; i > points.Count-1; i--)
                 {
-                    Debug.Log($"Removed point at {i}");
+                    //Debug.Log($"Removed point at {i}");
                     _spriteShapeController.spline.RemovePointAt(i);
                 }
             }
@@ -166,7 +166,7 @@ namespace GlobalGameJam2023
                 _spriteShapeController.spline.SetHeight(i, width);
             }
 
-            Debug.Log(_spriteShapeController.spline.GetPointCount());
+            //Debug.Log(_spriteShapeController.spline.GetPointCount());
         }
 
         /// <summary>
@@ -192,7 +192,6 @@ namespace GlobalGameJam2023
                 }
             }
             
-
             return localPosition;
         }
     }

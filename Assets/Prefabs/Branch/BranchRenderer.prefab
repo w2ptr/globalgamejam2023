@@ -28,11 +28,11 @@ Transform:
   m_GameObject: {fileID: 631516098099797126}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1971053207 &631516098099797120
 SpriteShapeRenderer:
@@ -78,9 +78,9 @@ SpriteShapeRenderer:
   m_SortingOrder: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_MaskInteraction: 0
-  m_ShapeTexture: {fileID: 2800000, guid: 3c5565656584545078d753b30145d7e7, type: 3}
+  m_ShapeTexture: {fileID: 2800000, guid: 785e85f9e55b7479c8452ac1b11b5aa4, type: 3}
   m_Sprites:
-  - {fileID: 21300000, guid: 3c5565656584545078d753b30145d7e7, type: 3}
+  - {fileID: 21300000, guid: 785e85f9e55b7479c8452ac1b11b5aa4, type: 3}
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
@@ -90,8 +90,8 @@ SpriteShapeRenderer:
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   m_LocalAABB:
-    m_Center: {x: 5.9994736, y: 0.5885606, z: 0}
-    m_Extent: {x: 22.387653, y: 4.7872133, z: 0}
+    m_Center: {x: 9.670304, y: -3.3703942, z: 0}
+    m_Extent: {x: 13.906274, y: 6.128981, z: 0}
   m_SpriteSortPoint: 0
 --- !u!114 &631516098099797121
 MonoBehaviour:
@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Spline:
     m_IsOpenEnded: 1
     m_ControlPoints:
-    - position: {x: -14.379964, y: -1.5475025, z: 0}
+    - position: {x: 0, y: 0, z: 0.000000005662747}
       leftTangent: {x: 0, y: 0, z: 0}
       rightTangent: {x: 0, y: 0, z: 0}
       mode: 0
@@ -116,34 +116,10 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-    - position: {x: -2.3152719, y: 1.6045647, z: 0}
-      leftTangent: {x: -11.352304, y: -7.8235645, z: 0}
-      rightTangent: {x: 2.6140635, y: 1.8015103, z: -0}
+    - position: {x: 20.433147, y: -6.776912, z: 0.000003192056}
+      leftTangent: {x: -7.8512383, y: 3.8574212, z: 0.00000043422915}
+      rightTangent: {x: 2.849409, y: -1.3999543, z: -0.0000001311355}
       mode: 1
-      height: 1
-      spriteIndex: 0
-      corner: 1
-      m_CornerMode: 1
-    - position: {x: 2.8549986, y: 3.216574, z: 0}
-      leftTangent: {x: -2.6700754, y: 0.011645317, z: 0}
-      rightTangent: {x: 2.5045168, y: -0.010923246, z: -0}
-      mode: 1
-      height: 0.5
-      spriteIndex: 0
-      corner: 1
-      m_CornerMode: 1
-    - position: {x: 7.487621, y: 1.7314858, z: 0}
-      leftTangent: {x: -3.1918297, y: 0.5839391, z: 0}
-      rightTangent: {x: 2.0051003, y: -0.36682922, z: -0}
-      mode: 1
-      height: 1
-      spriteIndex: 0
-      corner: 1
-      m_CornerMode: 1
-    - position: {x: 20.258808, y: 3.3611422, z: 0}
-      leftTangent: {x: -5.805455, y: 2.576868, z: 0}
-      rightTangent: {x: 0, y: 0, z: 0}
-      mode: 2
       height: 1
       spriteIndex: 0
       corner: 1
@@ -178,10 +154,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteShapeController: {fileID: 631516098099797121}
-  _points:
-  - Width: 1
-    Position: {x: 2, y: 0, z: 0}
-  - Width: 1
-    Position: {x: 3, y: 0, z: 0}
-  - Width: 1
-    Position: {x: 4, y: 0, z: 0}
+  WidthOffset: 0
+  Scale: 0.22
+  Height: 0.5
+  CurveScaleOffset: 0.46
+  Points:
+  - Width: 1.53
+    Position: {x: 0.22, y: 0, z: -0.09}
+  - Width: 0.92
+    Position: {x: -0.14, y: 0, z: 2.31}
+  - Width: 0.87
+    Position: {x: 4, y: 0, z: 4}
+  - Width: 0.39
+    Position: {x: 2.7, y: 0, z: -0.16}
+  - Width: 0
+    Position: {x: -2.52, y: 0, z: -2.73}
+  - Width: -0.42
+    Position: {x: -1.22, y: 0, z: -3.38}
+  - Width: -0.42
+    Position: {x: -0.61, y: 0, z: -2.14}
+  - Width: -0.42
+    Position: {x: -1.72, y: 0, z: -1.95}
+  - Width: -0.42
+    Position: {x: -1.14, y: 0, z: -1.24}
