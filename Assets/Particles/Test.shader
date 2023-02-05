@@ -86,8 +86,8 @@ Shader "Unlit/Test"
                 float2 ownUV = i.uv;
                 fixed2 test = ComputeScreenPos(i.vertex);
                 test.y = -test.y;
-                test.y /= _ScreenHeight;
-                test.x /= _ScreenWidth;
+                test.y /= _ScreenParams.y;
+                test.x /= _ScreenParams.x;
                 fixed4 col = fixed4(test, 0.0, 1.0);
 
                 ownUV.x = (ownUV.x - 0.5) * 2;

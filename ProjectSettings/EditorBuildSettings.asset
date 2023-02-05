@@ -11,9 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level_1_vegetalViolence.unity
     guid: acc43757b32343641bf90f4bd185a925
-  - enabled: 1
-    path: Assets/Scenes/Level_2_entwined.unity
-    guid: cd440d17b64f08e408e08a7d3baac7ca
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Level_3_TwinValley.unity
     guid: 70e8a1c41459ad54eba3afd732e1bdf0
