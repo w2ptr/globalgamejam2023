@@ -50,14 +50,28 @@ Shader "Unlit/NewUnlitShader"
 
             fixed4 frag (v2f i) : SV_Target
             {
-
-//                float yDistort = screenCoord.y; // + ;
                 float2 screenPoso = i.screenPos.xy;
 
-                screenPoso.x += cos(screenPoso.y*3*PI + _SinTime.w)*0.7;
+                // Syncs up with music quite well
+                fixed4 timeColor = _Time;
+                timeColor.w = 1.0;
+                timeColor /= 1.7;
+                timeColor = clamp(timeColor, 0.0, 1.0);
+                
+
+
                 screenPoso.y += sin(screenPoso.x*4*PI)*0.1;
-//                fixed4 col = fixed4(screenPoso, 0.0, 1.0);
+                screenPoso.x += cos(screenPoso.y*3*PI + _SinTime.w)*0.5;
                 fixed4 col = tex2D(_MainTex, screenPoso);
+                col.r *= 1.4;
+
+                if (length(col) < 1.1)
+                {
+                        col.b *= 0.7f;
+                        col.g *= 1.4f;
+                }
+
+                col = lerp(col, timeColor, 0.2);
                 // apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);
                 return col;
