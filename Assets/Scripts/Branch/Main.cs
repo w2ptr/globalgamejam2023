@@ -12,11 +12,62 @@ namespace GlobalGameJam2023
 
         private GGJ2023InputActions _ggj2023InputActions;
 
-        public float HorizontalInput = 0f;
-        public float VerticalInput = 0f;
+        private float _player1HorizontalInput = 0f;
+        private float _player1VerticalInput = 0f;
+
+        private float _player2HorizontalInput = 0f;
+        private float _player2VerticalInput = 0f;
 
         public GameObject BranchControllerPrefab;
         public GameObject TargetTransformPrefab;
+
+        [SerializeField] private Tree _player1Tree;
+        [SerializeField] private Tree _player2Tree;
+
+        public enum Player
+        {
+            Player1,
+            Player2
+        }
+
+        public Tree GetTree(Player player)
+        {
+            switch (player)
+            {
+                case Player.Player1:
+                    return _player1Tree;
+                case Player.Player2:
+                    return _player2Tree;
+                default:
+                    return null;
+            }
+        }
+
+        public float GetHorizontal(Player player)
+        {
+            switch (player)
+            {
+                case Player.Player1:
+                    return _player1HorizontalInput;
+                case Player.Player2:
+                    return _player2HorizontalInput;
+                default:
+                    return 0.0f;
+            }
+        }
+
+        public float GetVertical(Player player)
+        {
+            switch (player)
+            {
+                case Player.Player1:
+                    return _player1VerticalInput;
+                case Player.Player2:
+                    return _player2VerticalInput;
+                default:
+                    return 0.0f;
+            }
+        }
 
         private void Awake()
         {
@@ -35,14 +86,24 @@ namespace GlobalGameJam2023
             _ggj2023InputActions.General.Enable();
         }
 
-        void GGJ2023InputActions.IGeneralActions.OnHorizontalAxis(InputAction.CallbackContext context)
+        void GGJ2023InputActions.IGeneralActions.OnPlayer1_HorizontalAxis(InputAction.CallbackContext context)
         {
-            HorizontalInput = context.ReadValue<float>();
+            _player1HorizontalInput = context.ReadValue<float>();
         }
 
-        void GGJ2023InputActions.IGeneralActions.OnVerticalAxis(InputAction.CallbackContext context)
+        void GGJ2023InputActions.IGeneralActions.OnPlayer1_VerticalAxis(InputAction.CallbackContext context)
         {
-            VerticalInput = context.ReadValue<float>();
+            _player1VerticalInput = context.ReadValue<float>();
+        }
+
+        void GGJ2023InputActions.IGeneralActions.OnPlayer2_HorizontalAxis(InputAction.CallbackContext context)
+        {
+            _player2HorizontalInput = context.ReadValue<float>();
+        }
+
+        void GGJ2023InputActions.IGeneralActions.OnPlayer2_VerticalAxis(InputAction.CallbackContext context)
+        {
+            _player2VerticalInput = context.ReadValue<float>();
         }
     }
 }

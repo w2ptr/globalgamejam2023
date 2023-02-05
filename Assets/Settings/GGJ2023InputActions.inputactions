@@ -1,12 +1,12 @@
 {
-    "name": "Input",
+    "name": "GGJ2023InputActions",
     "maps": [
         {
             "name": "General",
             "id": "68e12916-4e11-4d30-baa6-a3473f4389eb",
             "actions": [
                 {
-                    "name": "Horizontal Axis",
+                    "name": "Player1_Horizontal Axis",
                     "type": "Value",
                     "id": "14b20b32-247a-45c8-a7a8-b79b78c47b66",
                     "expectedControlType": "Axis",
@@ -15,9 +15,27 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Vertical Axis",
+                    "name": "Player1_Vertical Axis",
                     "type": "Button",
                     "id": "fa3beeff-0479-42ac-885d-58d2508301c2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Player2_Horizontal Axis",
+                    "type": "Value",
+                    "id": "992983ed-0733-4060-b2d2-e76a4df412ea",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Player2_Vertical Axis",
+                    "type": "Button",
+                    "id": "6d5da0bd-31cb-4880-ba2c-e0ff7fcff877",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -32,7 +50,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Horizontal Axis",
+                    "action": "Player1_Horizontal Axis",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -43,7 +61,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Horizontal Axis",
+                    "action": "Player1_Horizontal Axis",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -54,7 +72,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Horizontal Axis",
+                    "action": "Player1_Horizontal Axis",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -65,7 +83,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Vertical Axis",
+                    "action": "Player1_Vertical Axis",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -76,7 +94,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Vertical Axis",
+                    "action": "Player1_Vertical Axis",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -87,7 +105,73 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Vertical Axis",
+                    "action": "Player1_Vertical Axis",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "150ab414-a46c-4c58-83b1-b59bfdaf03ac",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Player2_Vertical Axis",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "ba7edd08-9c99-4407-b5b9-d874e11d7223",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Player2_Vertical Axis",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "2283988f-5ccf-4396-925b-33739352e8df",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Player2_Vertical Axis",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "d294c07a-cb50-483a-8f3b-de129f4b273d",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Player2_Horizontal Axis",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "9352ad87-9f8c-4ed9-a7fe-a3d46b35446c",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Player2_Horizontal Axis",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "90fd0b3d-3119-44b2-bec5-bf3955504db5",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Player2_Horizontal Axis",
                     "isComposite": false,
                     "isPartOfComposite": true
                 }
