@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -354,6 +354,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 72220455}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &80758343 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6755912561683088324, guid: ba306b34205b0d34aa89ea95a6aed038,
+    type: 3}
+  m_PrefabInstance: {fileID: 766246578}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d436ab4eeb800314088b6360c9d3a7a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &112396503
 GameObject:
   m_ObjectHideFlags: 0
@@ -4033,7 +4045,7 @@ MonoBehaviour:
   score: 0
   textfield: {fileID: 1414414291}
   tree: {fileID: 1477493835}
-  gameEnder: {fileID: 0}
+  gameEnder: {fileID: 80758343}
 --- !u!82 &1915255551
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4513,7 +4525,7 @@ MonoBehaviour:
   score: 0
   textfield: {fileID: 946056720}
   tree: {fileID: 330151559}
-  gameEnder: {fileID: 0}
+  gameEnder: {fileID: 80758343}
 --- !u!4 &2131112232
 Transform:
   m_ObjectHideFlags: 0
