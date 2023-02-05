@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 1;
     public float speedCounterStart = 25;
     private float speedCounter;
+    private List<(KeyCode, string, float, float)> inputs;
 
     public List<AudioSource> spawnSounds;
 
@@ -29,35 +30,64 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         speedCounter = speedCounterStart;
+
+        var s = 20.0f;
+        inputs = new List<(KeyCode, string, float, float)>() {
+            (KeyCode.W, "Player1Target2", s, 0f),
+            (KeyCode.A, "Player1Target2", 0f, -s),
+            (KeyCode.S, "Player1Target2", -s, 0f),
+            (KeyCode.D, "Player1Target2", 0f, s),
+            (KeyCode.T, "Player1Target1", s, 0f),
+            (KeyCode.F, "Player1Target1", 0f, -s),
+            (KeyCode.G, "Player1Target1", -s, 0f),
+            (KeyCode.H, "Player1Target1", 0f, s),
+            (KeyCode.I, "Player2Target2", s, 0f),
+            (KeyCode.J, "Player2Target2", 0f, -s),
+            (KeyCode.K, "Player2Target2", -s, 0f),
+            (KeyCode.L, "Player2Target2", 0f, s),
+            (KeyCode.UpArrow, "Player2Target1", s, 0f),
+            (KeyCode.LeftArrow, "Player2Target1", 0f, -s),
+            (KeyCode.DownArrow, "Player2Target1", -s, 0f),
+            (KeyCode.RightArrow, "Player2Target1", 0f, s),
+        };
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-         speedCounter-=1;
-         if(speedCounter == 0 ){
-            speedCounter=speedCounterStart/speed;
-             createRoot();
-         }
+        speedCounter -= 1;
+        if (speedCounter == 0)
+        {
+            speedCounter = speedCounterStart / speed;
+            createRoot();
+        }
     }
 
     void OnGUI()
     {
-        Event m_Event = Event.current;
+        Event e = Event.current;
 
-        if (m_Event.type == EventType.KeyDown)
+        if (e.type == EventType.KeyDown)
         {
-            switch (m_Event.keyCode)
+            foreach (var (code, target, v, h) in inputs)
+            {
+                if (e.keyCode == code)
+                {
+                    var obj = GameObject.FindGameObjectWithTag(target);
+                    var playerTarget = obj.GetComponent<PlayerTarget>();
+                    playerTarget.Move(v, h);
+                }
+            }
+
+            switch (e.keyCode)
             {
                 case KeyCode.JoystickButton1:
                     Debug.Log("lol");
                     break;
-
                 case KeyCode.Space:
-                    createRoot();
+                    Debug.Log("hi");
                     break;
                 default:
-
                     break;
             }
         }
