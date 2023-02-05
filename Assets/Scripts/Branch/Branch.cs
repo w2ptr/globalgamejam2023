@@ -116,7 +116,7 @@ namespace GlobalGameJam2023
             newBranchController.Player = Player;
         }
 
-        private void OnCollisionEnter(Collision collision)
+        private void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.collider.TryGetComponent<Powerup>(out Powerup powerup))
             {
