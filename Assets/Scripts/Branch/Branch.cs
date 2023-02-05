@@ -27,6 +27,8 @@ namespace GlobalGameJam2023
         /// </summary>
         public float PointPlacementInterval = 1f;
 
+        public float RandomRotationDegreesOnBranchOff = 30f;
+
         private BranchRenderer _branchRenderer;
 
         private void Start()
@@ -110,7 +112,7 @@ namespace GlobalGameJam2023
         {
             GameObject newBranchControllerGameObject = Instantiate(gameObject, null, false);
             newBranchControllerGameObject.transform.position = transform.position;
-            newBranchControllerGameObject.transform.rotation = transform.rotation;//Quaternion.Euler(0, transform.rotation.y + Random.Range(20, 20), 0);
+            newBranchControllerGameObject.transform.rotation = Quaternion.Euler(0, 0, newBranchControllerGameObject.transform.rotation.z + Random.Range(-RandomRotationDegreesOnBranchOff, RandomRotationDegreesOnBranchOff));
 
             Branch newBranchController = newBranchControllerGameObject.GetComponent<Branch>();
             newBranchController.Player = Player;
