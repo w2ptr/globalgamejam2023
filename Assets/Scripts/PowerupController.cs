@@ -43,7 +43,6 @@ public class PowerupController : MonoBehaviour
 
     private void SpawnPowerup(Vector3 position, PowerupType type)
     {
-        Debug.Log("spawning");
         var prefab = powerupPrefabs[(int) type];
         var obj = Instantiate(prefab);
         obj.transform.position = position;
