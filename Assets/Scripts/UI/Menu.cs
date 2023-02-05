@@ -8,6 +8,13 @@ public class Menu : MonoBehaviour
     public GameObject mainMenu;
     public GameObject settingsMenu;
 
+    private string[] levels = {
+        "Level_1_vegetalViolence",
+        "Level_2_entwined",
+        "Level_3_TwinValley",
+        "Level_4_QuatroCarnivoria",
+    };
+
     void Start()
     {
         ShowMainMenu();
@@ -25,6 +32,7 @@ public class Menu : MonoBehaviour
     }
     public void StartGame()
     {
-        SceneManager.LoadScene("SampleScene");
+        int level = PlayerPrefs.GetInt("mapSelection", 0);
+        SceneManager.LoadScene(levels[level]);
     }
 }
