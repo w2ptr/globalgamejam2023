@@ -100,9 +100,9 @@ namespace GlobalGameJam2023
                     Width = 1.0f
                 });
 
-                SphereCollider newSphereCollider = gameObject.AddComponent<SphereCollider>();
-                newSphereCollider.center = transform.position;
-                newSphereCollider.radius = 0.5f;
+                //SphereCollider newSphereCollider = gameObject.AddComponent<SphereCollider>();
+                //newSphereCollider.center = transform.position;
+                //newSphereCollider.radius = 0.5f;
             }
         }
 
