@@ -8,6 +8,9 @@ public class Corpse : MonoBehaviour
     public float howMuchBlood = 1.0f;
     public List<AudioSource> eatSounds;
     public List<GameObject> particleEffects;
+
+    private bool triggered = false;
+    private bool playerFound = false;
     
     void Start()
     {
@@ -17,14 +20,42 @@ public class Corpse : MonoBehaviour
 
     void OnTriggerEnter(Collider thing)
     {
-        //Do sound
-        //eatSounds[Random.Range(0, eatSounds.Count)].Play();
+        if(thing.transform.tag == "MovingRoot1"||thing.transform.tag == "MovingRoot2"){
+                playerFound=true;
+        }
 
-        Debug.Log("Corpse hit");
+        if(!playerFound)
+            return;
+
+        if(!triggered){
+            triggered=true;
+        }else{
+            return;
+        }
+
+        //Do sound
+
+
+
+        if(eatSounds.Count>0)
+             eatSounds[Random.Range(0, eatSounds.Count)].Play();
+
+  
 
         //Create particle effect
-        int particleChoice = Random.Range(0, particleEffects.Count);
-        GameObject particleSystem = Instantiate(particleEffects[particleChoice], transform.position, Quaternion.identity);
-        particleSystem.GetComponent<ParticleSystem>().Play();
+        if(particleEffects.Count>0){
+            int particleChoice = Random.Range(0, particleEffects.Count);
+            GameObject particleSystem = Instantiate(particleEffects[particleChoice], transform.position, Quaternion.identity);
+            particleSystem.GetComponent<ParticleSystem>().Play();
+        }
+
+
+        Invoke("SelfDestruct", 2.0f);
+        
+    }
+
+
+    void SelfDestruct(){
+        Destroy(gameObject);
     }
 }

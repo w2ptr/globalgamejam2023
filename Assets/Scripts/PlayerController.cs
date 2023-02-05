@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
     public float speedCounterStart = 25;
     private float speedCounter;
 
+    public List<AudioSource> spawnSounds;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -82,6 +84,9 @@ public class PlayerController : MonoBehaviour
         {
             movingBranches = GameObject.FindGameObjectsWithTag("Player" + playerNr + "Brench");
 
+            if(spawnSounds.Count>0)
+                spawnSounds[Random.Range(0, spawnSounds.Count)].Play();
+
             for (int i = 0; i < movingBranches.Length; i++)
             {
                 Brench tempBranch = movingBranches[i].GetComponent<Brench>();
@@ -97,6 +102,8 @@ public class PlayerController : MonoBehaviour
 
     public void createBranch(GameObject branchPrefab)
     {
-        Instantiate(branchPrefab, lastRoot.transform.position, lastRoot.transform.rotation, transform);
+        GameObject tempObj = Instantiate(branchPrefab, lastRoot.transform.position, lastRoot.transform.rotation, transform);
+
+        
     }
 }

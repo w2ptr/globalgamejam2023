@@ -12,6 +12,7 @@ public class Brench : MonoBehaviour
     private Transform nextSpawn;
     private GameObject tempSpawn;
 
+
     // Start is called before the first frame update
     void Start()
     {
