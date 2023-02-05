@@ -19,16 +19,24 @@ public class PlayerController : MonoBehaviour
 
     private GameObject[] movingBranches;
 
+    public float speed = 1;
+    public float speedCounterStart = 25;
+    private float speedCounter;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        speedCounter = speedCounterStart;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-
+         speedCounter-=1;
+         if(speedCounter == 0 ){
+            speedCounter=speedCounterStart/speed;
+             createRoot();
+         }
     }
 
     void OnGUI()
