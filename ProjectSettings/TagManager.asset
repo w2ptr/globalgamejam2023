@@ -19,6 +19,7 @@ TagManager:
   - MovingRoot2
   - Player1
   - Player2
+  - corpse
   layers:
   - Default
   - TransparentFX

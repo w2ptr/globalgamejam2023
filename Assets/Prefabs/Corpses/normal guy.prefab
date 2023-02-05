@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 7027262204745154665}
   m_Layer: 0
   m_Name: normal guy
-  m_TagString: Untagged
+  m_TagString: corpse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -166,6 +166,7 @@ MonoBehaviour:
   - {fileID: 1493308071531570645, guid: 203478c1a03542445bd9a90222ce3ac7, type: 3}
   - {fileID: 2468912604435559388, guid: fc9f649ce1f4550458a01ec414ad4eb7, type: 3}
   - {fileID: 8998774334088383368, guid: ecc691dc98f366d46af691e6537b6dcb, type: 3}
+  score: 1
   speedAdjust: 0.3
 --- !u!65 &8100917344597359044
 BoxCollider:
@@ -186,7 +187,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 7, y: 7, z: 7}
+  m_Size: {x: 5, y: 5, z: 6}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &8100917344597359050
 AudioSource:

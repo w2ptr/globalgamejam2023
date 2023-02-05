@@ -36,6 +36,8 @@ public class PlayerController : MonoBehaviour
     public TMP_Text textfield;
     public Transform tree;
 
+    public GameEnder gameEnder;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -76,6 +78,13 @@ public class PlayerController : MonoBehaviour
     public void AddScore(float input){
         score+=input;
         textfield.text = ""+score;
+
+        if(playerNr==1){
+            gameEnder.AddScore1();
+        }else{
+            gameEnder.AddScore2();
+        }
+
         tree.localScale = new Vector3(tree.localScale.x*1.05f,tree.localScale.y*1.05f,tree.localScale.z*1.05f);
     }
 
