@@ -27,7 +27,11 @@ namespace GlobalGameJam2023
         /// </summary>
         public float PointPlacementInterval = 1f;
 
-        public float RandomRotationDegreesOnBranchOff = 30f;
+        public float MinRandomRotationDegreesOnBranchOff = 20f;
+        public float MaxRandomRotationDegreesOnBranchOff = 50f;
+
+        private Vector3 _lastPlacedPosition;
+        private Quaternion _lastPlacedRotation;
 
         private BranchRenderer _branchRenderer;
 
@@ -42,9 +46,11 @@ namespace GlobalGameJam2023
             _branchRenderer = instantiatedBranchRendererGameObject.GetComponent<BranchRenderer>();
 
             _branchRenderer.Points.Clear();
+
+            _lastPlacedPosition = transform.position;
             BranchRenderer.Point emptyPoint = new BranchRenderer.Point()
             {
-                Position = transform.position,
+                Position = _lastPlacedPosition,
                 Width = 1.0f
             };
             _branchRenderer.Points = new List<BranchRenderer.Point>()
@@ -95,10 +101,12 @@ namespace GlobalGameJam2023
             {
                 //Debug.Log("Over threshold");
                 _distanceFromPreviousPoint = 0.0f;
+                _lastPlacedPosition = transform.position;
+                _lastPlacedRotation = transform.rotation;
                 // Place a point
                 _branchRenderer.Points.Insert(lastIndex, new BranchRenderer.Point()
                 {
-                    Position = transform.position,
+                    Position = _lastPlacedPosition,
                     Width = 1.0f
                 });
 
@@ -111,8 +119,9 @@ namespace GlobalGameJam2023
         private void BranchOff()
         {
             GameObject newBranchControllerGameObject = Instantiate(gameObject, null, false);
-            newBranchControllerGameObject.transform.position = transform.position;
-            newBranchControllerGameObject.transform.rotation = Quaternion.Euler(0, 0, newBranchControllerGameObject.transform.rotation.z + Random.Range(-RandomRotationDegreesOnBranchOff, RandomRotationDegreesOnBranchOff));
+            newBranchControllerGameObject.transform.position = _lastPlacedPosition;
+            newBranchControllerGameObject.transform.rotation = _lastPlacedRotation;
+            newBranchControllerGameObject.transform.Rotate(transform.forward, Random.Range(0, 1) == 1 ? -1 : 1 * Random.Range(MinRandomRotationDegreesOnBranchOff, MaxRandomRotationDegreesOnBranchOff));
 
             Branch newBranchController = newBranchControllerGameObject.GetComponent<Branch>();
             newBranchController.Player = Player;
@@ -120,6 +129,12 @@ namespace GlobalGameJam2023
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
+            if (collision.collider.gameObject.layer == Main.Instance.GetOtherPlayerLayerMask(Player))
+            {
+                Destroy(gameObject);
+                Debug.Log("Bumped into other player");
+            }
+
             if (collision.collider.TryGetComponent<Powerup>(out Powerup powerup))
             {
                 switch (powerup.Type)

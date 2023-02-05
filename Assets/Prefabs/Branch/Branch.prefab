@@ -54,6 +54,7 @@ MonoBehaviour:
   TurnSpeedDegreesPerSecond: 180
   GrowthMetersPerSecond: 5
   PointPlacementInterval: 5
+  RandomRotationDegreesOnBranchOff: 45
 --- !u!33 &2747279322809877028
 MeshFilter:
   m_ObjectHideFlags: 0
