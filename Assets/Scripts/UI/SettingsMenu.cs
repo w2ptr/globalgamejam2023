@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 // using GlobalGameJam2023.Globals;
+using GlobalGameJam2023;
 
 public class SettingsMenu : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class SettingsMenu : MonoBehaviour
     public GameObject overlayD;
     public GameObject optionE;
     public GameObject overlayE;
+
+    [SerializeField] private List<MapUIElement> _uiElements;
 
     private List<GameObject> options;
     private List<GameObject> overlays;
@@ -43,6 +46,22 @@ public class SettingsMenu : MonoBehaviour
 
         overlays[0].SetActive(true);
         PlayerPrefs.SetInt("mapSelection", 0);
+    }
+
+    public void Select(MapUIElement mapUIElement)
+    {
+        foreach (MapUIElement element in _uiElements)
+        {
+            if (mapUIElement != element)
+            {
+                element.IsSelected = false;
+            }
+        }
+    }
+
+    public void TryDeselect(MapUIElement mapUIElement)
+    {
+        mapUIElement.IsSelected = false;
     }
 
     private void SelectMap(int x)

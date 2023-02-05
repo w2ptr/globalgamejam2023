@@ -24,6 +24,30 @@ public class PowerupController : MonoBehaviour
             PowerupType.SplitBranch,
             PowerupType.KillOtherBranch
         };
+
+        _spawnCoroutine = Spawn();
+
+        StartCoroutine(_spawnCoroutine);
+    }
+
+    [SerializeField] private float _intervalInSeconds = 0.5f;
+
+    private bool _shouldSpawn = false;
+
+    private IEnumerator _spawnCoroutine;
+
+    private IEnumerator Spawn()
+    {
+        while (_shouldSpawn)
+        {
+            //SpawnPowerup()
+            yield return new WaitForSeconds(_intervalInSeconds);
+        }
+    }
+
+    private void Blablabla()
+    {
+        StopCoroutine(_spawnCoroutine);
     }
 
     void Update()

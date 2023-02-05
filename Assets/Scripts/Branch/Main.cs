@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 namespace GlobalGameJam2023
 {
@@ -24,6 +25,9 @@ namespace GlobalGameJam2023
         [SerializeField] private Tree _player1Tree;
         [SerializeField] private Tree _player2Tree;
 
+        [SerializeField] private TextMeshProUGUI _player1Text;
+        [SerializeField] private TextMeshProUGUI _player2Text;
+
         public GameObject _player1BranchPrefab;
         public GameObject _player2BranchPrefab;
 
@@ -38,6 +42,19 @@ namespace GlobalGameJam2023
             public Tree Tree;
             public GameObject BranchPrefab;
 
+            public TextMeshProUGUI Text;
+
+            private int _score = 0;
+            public int Score
+            {
+                get => _score;
+                set
+                {
+                    _score = value;
+                    Text.text = $"Score: {_score}";
+                }
+            }
+
             public List<Branch> Branches = new List<Branch>();
 
             public void AddBranch(Branch branch)
@@ -51,15 +68,11 @@ namespace GlobalGameJam2023
                 newBranchControllerGameObject.transform.position = Tree.transform.position;
                 Branch branch = newBranchControllerGameObject.GetComponent<Branch>();
                 AddBranch(branch);
-                Debug.Log(Branches.Count);
             }
 
             public void RemoveBranch(Branch branch)
             {
-                Debug.Log(branch);
-                Debug.Log(Branches.Count);
                 Branches.Remove(branch);
-                Debug.Log(Branches.Count);
 
                 if (Branches.Count == 0)
                 {
@@ -132,7 +145,8 @@ namespace GlobalGameJam2023
                     new PlayerData()
                     {
                         Tree = _player1Tree,
-                        BranchPrefab = _player1BranchPrefab
+                        BranchPrefab = _player1BranchPrefab,
+                        Text = _player1Text
                     }
                 },
                 {
@@ -140,7 +154,8 @@ namespace GlobalGameJam2023
                     new PlayerData()
                     {
                         Tree = _player2Tree,
-                        BranchPrefab = _player2BranchPrefab
+                        BranchPrefab = _player2BranchPrefab,
+                        Text = _player2Text
                     }
                 }
             };

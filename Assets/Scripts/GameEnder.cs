@@ -21,11 +21,13 @@ public class GameEnder : MonoBehaviour
 
     }
 
-    public void AddScore1(){
+    public void AddScore1()
+    {
          score1+=1;
     }
 
-    public void AddScore2(){
+    public void AddScore2()
+    {
          score2+=1;
     }
 

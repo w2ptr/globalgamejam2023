@@ -4,8 +4,19 @@ using UnityEngine;
 
 public class PlayerTarget : MonoBehaviour
 {
-    public enum PlayerJoystick { Player1Stick1,Player1Stick2,Player1Central,Player2Stick1,Player2Stick2,Player2Central };
-    public  PlayerJoystick playerJoystick;
+    public enum PlayerJoystick
+    {
+        Player1Stick1,
+        Player1Stick2,
+
+        Player1Central,
+        Player2Central,
+
+        Player2Stick1,
+        Player2Stick2
+    };
+
+    public PlayerJoystick playerJoystick;
 
     private GameObject stick1;
     private GameObject stick2;
@@ -55,10 +66,13 @@ public class PlayerTarget : MonoBehaviour
 
     public void Move(float vertical, float horizontal)
     {
-        var translation1 = vertical * Time.deltaTime * 20;
-        transform.Translate(0, 0, translation1);
-        var translation2 = horizontal * Time.deltaTime * 20;
-        transform.Translate(translation2, 0, 0);
+        //var translation1 = vertical * Time.deltaTime * 20;
+        //transform.Translate(0, 0, translation1);
+
+        transform.Translate(new Vector3(horizontal, 0, vertical) * (Time.deltaTime * 20));
+
+        //var translation2 = horizontal * Time.deltaTime * 20;
+        //transform.Translate(translation2, 0, 0);
     }
 
     private void SetToAverage(Transform transform1, Transform transform2)

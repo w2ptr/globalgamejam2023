@@ -37,6 +37,8 @@ namespace GlobalGameJam2023
 
         public float KillingTime;
 
+        public List<Branch> Children = new List<Branch>();
+
         [SerializeField] private Material _killingMaterial;
         private Material _normalMaterial;
 
@@ -132,7 +134,26 @@ namespace GlobalGameJam2023
                 //newSphereCollider.center = transform.position;
                 //newSphereCollider.radius = 0.5f;
             }
+
+            bool keyIsPressed = Keyboard.current[Key.Space].isPressed;
+
+            Debug.Log($"canPress: {canPress}, keyIsPressed: {keyIsPressed}");
+
+            if (keyIsPressed)
+            {
+                if (canPress)
+                {
+                    BranchOff();
+                    canPress = false;
+                }
+            }
+            else
+            {
+                canPress = true;
+            }
         }
+
+        private bool canPress = false;
 
         private void BranchOff()
         {
@@ -141,10 +162,12 @@ namespace GlobalGameJam2023
             newBranchControllerGameObject.transform.rotation = _lastPlacedRotation;
             newBranchControllerGameObject.transform.Rotate(transform.forward, (Random.Range(0, 1) == 1 ? -1 : 1) * Random.Range(MinRandomRotationDegreesOnBranchOff, MaxRandomRotationDegreesOnBranchOff));
 
-            Main.Instance.PlayersData[Player].AddBranch(this);
+            Branch newBranch = newBranchControllerGameObject.GetComponent<Branch>();
+            Main.Instance.PlayersData[Player].AddBranch(newBranch);
 
-            Branch newBranchController = newBranchControllerGameObject.GetComponent<Branch>();
-            newBranchController.Player = Player;
+            Children.Add(newBranch);
+
+            newBranch.Player = Player;
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
@@ -175,9 +198,12 @@ namespace GlobalGameJam2023
                 {
                     case Powerup.PowerupType.SplitBranch:
                         BranchOff();
+                        BranchOff();
+                        BranchOff();
                         break;
                     case Powerup.PowerupType.AddWater:
                         Tree tree = Main.Instance.PlayersData[Player].Tree;
+                        Main.Instance.PlayersData[Player].Score += 1;
                         tree.AddWater();
                         break;
                     case Powerup.PowerupType.DestroyBranch:
@@ -201,6 +227,10 @@ namespace GlobalGameJam2023
 
         public void DestroyBranch()
         {
+            //foreach (Branch branch in Children)
+            //{
+            //    DestroyBranch();
+            //}
             Main.Instance.PlayersData[Player].RemoveBranch(this);
         }
 

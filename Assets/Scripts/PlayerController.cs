@@ -77,9 +77,10 @@ public class PlayerController : MonoBehaviour
 
     public void AddScore(float input){
         score+=input;
-        textfield.text = ""+score;
+        textfield.text = $"{score}";// ""+score;
+        textfield.text = score.ToString();
 
-        if(playerNr==1){
+        if (playerNr==1){
             gameEnder.AddScore1();
         }else{
             gameEnder.AddScore2();
@@ -132,13 +133,16 @@ public class PlayerController : MonoBehaviour
 
         if (rootCounter >= brenchSpawnRate) // split off
         {
-            createBranch(leftBrenchPrefab);
-            createBranch(rightBrenchPrefab);
+            CreateBranch(leftBrenchPrefab);
+            CreateBranch(rightBrenchPrefab);
             rootCounter = 0;
 
-                        if(Random.Range(0, 2)==0){
-             if(spawnSounds.Count>0)
-                spawnSounds[Random.Range(0, spawnSounds.Count)].Play();
+            if (Random.Range(0, 2) == 0)
+            {
+                if (spawnSounds.Count > 0)
+                {
+                    spawnSounds[Random.Range(0, spawnSounds.Count)].Play();
+                }
             }
         }
 
@@ -154,13 +158,10 @@ public class PlayerController : MonoBehaviour
 
             rootCounter2 = 0;
         }
-
     }
 
-    public void createBranch(GameObject branchPrefab)
+    public void CreateBranch(GameObject branchPrefab)
     {
         GameObject tempObj = Instantiate(branchPrefab, lastRoot.transform.position, lastRoot.transform.rotation, transform);
-
-        
     }
 }

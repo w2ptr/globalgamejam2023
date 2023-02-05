@@ -14,7 +14,6 @@ public class Corpse : MonoBehaviour
     public float speedAdjust = 0.1f;
 
     private bool triggered = false;
-    private bool playerFound = false;
 
     private GameObject player;
     
@@ -26,12 +25,13 @@ public class Corpse : MonoBehaviour
     public void Update(){
         if(triggered){
             transform.localScale = new Vector3(transform.localScale.x+0.002f,transform.localScale.y+0.002f,transform.localScale.z+0.002f);
+            //transform.localScale *= 1.002f;
         }
     }
 
-
     void OnTriggerEnter(Collider thing)
     {
+        bool playerFound = false;
         if(thing.transform.tag == "MovingRoot1"){
             player = GameObject.FindGameObjectWithTag("Player1");
             playerFound=true;
@@ -64,10 +64,15 @@ public class Corpse : MonoBehaviour
 
 
         Invoke("SelfDestruct", 1.1f);
-        
+
+        StartCoroutine(SelfDestructAfterTime(1.1f));
     }
 
-
+    private IEnumerator SelfDestructAfterTime(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        // blabalbla
+    }
 
 
     void SelfDestruct(){
