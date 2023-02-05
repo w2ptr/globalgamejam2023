@@ -5,23 +5,41 @@ using UnityEngine;
 
 public class Corpse : MonoBehaviour
 {
-    public float howMuchBlood = 1.0f;
+    public float howMuchBlood = 1f;
     public List<AudioSource> eatSounds;
     public List<GameObject> particleEffects;
+    public List<GameObject> soundEffects;
+    public float score = 1f;
+
+    public float speedAdjust = 0.1f;
 
     private bool triggered = false;
     private bool playerFound = false;
+
+    private GameObject player;
     
     void Start()
     {
-        transform.localScale = Vector3.one * howMuchBlood;
+    //    transform.localScale = Vector3.one * howMuchBlood;
+    }
+
+    public void Update(){
+        if(triggered){
+            transform.localScale = new Vector3(transform.localScale.x+0.002f,transform.localScale.y+0.002f,transform.localScale.z+0.002f);
+        }
     }
 
 
     void OnTriggerEnter(Collider thing)
     {
-        if(thing.transform.tag == "MovingRoot1"||thing.transform.tag == "MovingRoot2"){
-                playerFound=true;
+        if(thing.transform.tag == "MovingRoot1"){
+            player = GameObject.FindGameObjectWithTag("Player1");
+            playerFound=true;
+        }
+        
+        if(thing.transform.tag == "MovingRoot2"){
+            player = GameObject.FindGameObjectWithTag("Player2");
+            playerFound=true;
         }
 
         if(!playerFound)
@@ -40,9 +58,20 @@ public class Corpse : MonoBehaviour
         if(eatSounds.Count>0)
              eatSounds[Random.Range(0, eatSounds.Count)].Play();
 
-  
+        PlayerController tempController = player.GetComponent("PlayerController") as PlayerController;
+        tempController.speed += speedAdjust;
+        tempController.AddScore(score);
 
-        //Create particle effect
+
+        Invoke("SelfDestruct", 1.1f);
+        
+    }
+
+
+
+
+    void SelfDestruct(){
+            //Create particle effect
         if(particleEffects.Count>0){
             int particleChoice = Random.Range(0, particleEffects.Count);
             GameObject particleSystem = Instantiate(particleEffects[particleChoice], transform.position, Quaternion.identity);
@@ -50,12 +79,12 @@ public class Corpse : MonoBehaviour
         }
 
 
-        Invoke("SelfDestruct", 2.0f);
-        
-    }
 
+        if(soundEffects.Count>0){
+            int soundChoice = Random.Range(0, soundEffects.Count);
+            Instantiate(soundEffects[soundChoice], transform.position, Quaternion.identity);
+        }
 
-    void SelfDestruct(){
-        Destroy(gameObject);
+        Destroy(this.gameObject);
     }
 }

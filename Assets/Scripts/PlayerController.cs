@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,10 +13,14 @@ public class PlayerController : MonoBehaviour
     public GameObject rightBrenchPrefab;
     public Transform trailTarget;
 
+    public int brenchGrowthRate = 2;
+    public int brenchSpawnRate = 12;
+
     private Transform nextSpawn;
     private GameObject tempSpawn;
 
     private int rootCounter = 0;
+    private int rootCounter2 = 0;
 
     private GameObject[] movingBranches;
 
@@ -25,6 +30,11 @@ public class PlayerController : MonoBehaviour
     private List<(KeyCode, string, float, float)> inputs;
 
     public List<AudioSource> spawnSounds;
+
+    public float score = 0;
+
+    public TMP_Text textfield;
+    public Transform tree;
 
     // Start is called before the first frame update
     void Start()
@@ -56,11 +66,17 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         speedCounter -= 1;
-        if (speedCounter == 0)
+        if (speedCounter <= 0)
         {
             speedCounter = speedCounterStart / speed;
             createRoot();
         }
+    }
+
+    public void AddScore(float input){
+        score+=input;
+        textfield.text = ""+score;
+        tree.localScale = new Vector3(tree.localScale.x*1.05f,tree.localScale.y*1.05f,tree.localScale.z*1.05f);
     }
 
     void OnGUI()
@@ -103,31 +119,33 @@ public class PlayerController : MonoBehaviour
         trailTarget.transform.position = lastRoot.transform.position;
 
         rootCounter += 1;
+        rootCounter2 += 1;
 
-        if (rootCounter == 6) // split off
+        if (rootCounter >= brenchSpawnRate) // split off
         {
             createBranch(leftBrenchPrefab);
             createBranch(rightBrenchPrefab);
+            rootCounter = 0;
+
+                        if(Random.Range(0, 2)==0){
+             if(spawnSounds.Count>0)
+                spawnSounds[Random.Range(0, spawnSounds.Count)].Play();
+            }
         }
 
-        if (rootCounter == 3) // build onto side branches
+        if (rootCounter2 >= brenchGrowthRate) // build onto side branches
         {
-            movingBranches = GameObject.FindGameObjectsWithTag("Player" + playerNr + "Brench");
-
-            if(spawnSounds.Count>0)
-                spawnSounds[Random.Range(0, spawnSounds.Count)].Play();
+            movingBranches = GameObject.FindGameObjectsWithTag("Player" + playerNr + "Brench");           
 
             for (int i = 0; i < movingBranches.Length; i++)
             {
                 Brench tempBranch = movingBranches[i].GetComponent<Brench>();
                 tempBranch.growBranch();
             }
+
+            rootCounter2 = 0;
         }
 
-        if (rootCounter == 6)
-        {
-            rootCounter = 0;
-        }
     }
 
     public void createBranch(GameObject branchPrefab)
