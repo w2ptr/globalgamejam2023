@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2460,6 +2460,79 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 322927347}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &323803946
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5702222969134764241, guid: e90ec38b5d96d4ee79fc521bd715e995,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 5702222969134764241, guid: e90ec38b5d96d4ee79fc521bd715e995,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.8431414
+      objectReference: {fileID: 0}
+    - target: {fileID: 5702222969134764241, guid: e90ec38b5d96d4ee79fc521bd715e995,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.6893002
+      objectReference: {fileID: 0}
+    - target: {fileID: 5702222969134764241, guid: e90ec38b5d96d4ee79fc521bd715e995,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7.096763
+      objectReference: {fileID: 0}
+    - target: {fileID: 5702222969134764241, guid: e90ec38b5d96d4ee79fc521bd715e995,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5702222969134764241, guid: e90ec38b5d96d4ee79fc521bd715e995,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5702222969134764241, guid: e90ec38b5d96d4ee79fc521bd715e995,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5702222969134764241, guid: e90ec38b5d96d4ee79fc521bd715e995,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5702222969134764241, guid: e90ec38b5d96d4ee79fc521bd715e995,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5702222969134764241, guid: e90ec38b5d96d4ee79fc521bd715e995,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5702222969134764241, guid: e90ec38b5d96d4ee79fc521bd715e995,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5702222969134764243, guid: e90ec38b5d96d4ee79fc521bd715e995,
+        type: 3}
+      propertyPath: m_Name
+      value: MusicManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e90ec38b5d96d4ee79fc521bd715e995, type: 3}
 --- !u!1 &330113403
 GameObject:
   m_ObjectHideFlags: 0
@@ -2936,6 +3009,8 @@ MonoBehaviour:
   endWidth: 0.18
   startWidth: 0.07
   minVertexDistance: 0.3
+  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  color2: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &404297868
 GameObject:
   m_ObjectHideFlags: 0
@@ -9554,6 +9629,8 @@ MonoBehaviour:
   endWidth: 0.18
   startWidth: 0.07
   minVertexDistance: 0.3
+  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  color2: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &1701937815
 GameObject:
   m_ObjectHideFlags: 0
@@ -11087,9 +11164,14 @@ MonoBehaviour:
   rightBrenchPrefab: {fileID: 7408022732449391310, guid: d77b48c1f6929864ebdff690241f1369,
     type: 3}
   trailTarget: {fileID: 1666212106}
+  brenchGrowthRate: 2
+  brenchSpawnRate: 12
   speed: 1
   speedCounterStart: 25
   spawnSounds: []
+  score: 0
+  textfield: {fileID: 0}
+  tree: {fileID: 0}
 --- !u!1 &1928572384
 GameObject:
   m_ObjectHideFlags: 0
@@ -12401,9 +12483,14 @@ MonoBehaviour:
   rightBrenchPrefab: {fileID: 7408022732449391310, guid: 96e4c02d3b60f584eb21f9d837a7d390,
     type: 3}
   trailTarget: {fileID: 371274873}
+  brenchGrowthRate: 2
+  brenchSpawnRate: 12
   speed: 1
   speedCounterStart: 25
   spawnSounds: []
+  score: 0
+  textfield: {fileID: 0}
+  tree: {fileID: 0}
 --- !u!4 &2131112232
 Transform:
   m_ObjectHideFlags: 0

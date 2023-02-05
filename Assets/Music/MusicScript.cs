@@ -29,7 +29,7 @@ public class MusicScript : MonoBehaviour
     {
         float timeSinceLastSound = Time.time - lastSoundTime;
 
-        float howLongToWait = Random.Range(45.0f, 110.0f);
+        float howLongToWait = Random.Range(30.0f, 90.0f);
 
         if (timeSinceLastSound > howLongToWait)
         {
