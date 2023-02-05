@@ -13,6 +13,7 @@ public class Menu : MonoBehaviour
         "Level_2_entwined",
         "Level_3_TwinValley",
         "Level_4_QuatroCarnivoria",
+        "SpriteShapeTest",
     };
 
     void Start()

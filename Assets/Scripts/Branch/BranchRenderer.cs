@@ -37,6 +37,8 @@ namespace GlobalGameJam2023
 
         public float CurveScaleOffset = 1.0f;
 
+        public Branch AssociatedBranch;
+
         /// <summary>
         /// To make sure the InserPointAt doesn't fail (Point too close to neighbour error)
         /// </summary>
@@ -79,8 +81,8 @@ namespace GlobalGameJam2023
 
         private void SetTransform()
         {
-            transform.localPosition = new Vector3(0f, Height, 0f);
-            transform.localRotation = Quaternion.Euler(90f, 0f, 0f);
+            transform.localPosition = new Vector3(0f, 0f, -Height);
+            transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
             transform.localScale = Vector3.one * Scale;
         }
 
@@ -174,7 +176,7 @@ namespace GlobalGameJam2023
         /// </summary>
         private Vector2 GetLocalPosition(int index, Vector3 worldSpacePosition)
         {
-            Vector2 xy = new Vector2(worldSpacePosition.x, worldSpacePosition.z);
+            Vector2 xy = new Vector2(worldSpacePosition.x, worldSpacePosition.y);
             Vector2 scaled = xy / Scale;
             Vector2 localPosition = scaled;
 

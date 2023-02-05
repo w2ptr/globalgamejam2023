@@ -28,7 +28,7 @@ public partial class @GGJ2023InputActions : IInputActionCollection2, IDisposable
             ""id"": ""68e12916-4e11-4d30-baa6-a3473f4389eb"",
             ""actions"": [
                 {
-                    ""name"": ""Horizontal Axis"",
+                    ""name"": ""Player1_Horizontal Axis"",
                     ""type"": ""Value"",
                     ""id"": ""14b20b32-247a-45c8-a7a8-b79b78c47b66"",
                     ""expectedControlType"": ""Axis"",
@@ -37,9 +37,27 @@ public partial class @GGJ2023InputActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Vertical Axis"",
+                    ""name"": ""Player1_Vertical Axis"",
                     ""type"": ""Button"",
                     ""id"": ""fa3beeff-0479-42ac-885d-58d2508301c2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Player2_Horizontal Axis"",
+                    ""type"": ""Value"",
+                    ""id"": ""992983ed-0733-4060-b2d2-e76a4df412ea"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Player2_Vertical Axis"",
+                    ""type"": ""Button"",
+                    ""id"": ""6d5da0bd-31cb-4880-ba2c-e0ff7fcff877"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -54,7 +72,7 @@ public partial class @GGJ2023InputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Horizontal Axis"",
+                    ""action"": ""Player1_Horizontal Axis"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -65,7 +83,7 @@ public partial class @GGJ2023InputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Horizontal Axis"",
+                    ""action"": ""Player1_Horizontal Axis"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -76,7 +94,7 @@ public partial class @GGJ2023InputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Horizontal Axis"",
+                    ""action"": ""Player1_Horizontal Axis"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -87,7 +105,7 @@ public partial class @GGJ2023InputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Vertical Axis"",
+                    ""action"": ""Player1_Vertical Axis"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -98,7 +116,7 @@ public partial class @GGJ2023InputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Vertical Axis"",
+                    ""action"": ""Player1_Vertical Axis"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -109,7 +127,73 @@ public partial class @GGJ2023InputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Vertical Axis"",
+                    ""action"": ""Player1_Vertical Axis"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""150ab414-a46c-4c58-83b1-b59bfdaf03ac"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Player2_Vertical Axis"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""ba7edd08-9c99-4407-b5b9-d874e11d7223"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Player2_Vertical Axis"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""2283988f-5ccf-4396-925b-33739352e8df"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Player2_Vertical Axis"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""d294c07a-cb50-483a-8f3b-de129f4b273d"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Player2_Horizontal Axis"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""9352ad87-9f8c-4ed9-a7fe-a3d46b35446c"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Player2_Horizontal Axis"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""90fd0b3d-3119-44b2-bec5-bf3955504db5"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Player2_Horizontal Axis"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 }
@@ -120,8 +204,10 @@ public partial class @GGJ2023InputActions : IInputActionCollection2, IDisposable
 }");
         // General
         m_General = asset.FindActionMap("General", throwIfNotFound: true);
-        m_General_HorizontalAxis = m_General.FindAction("Horizontal Axis", throwIfNotFound: true);
-        m_General_VerticalAxis = m_General.FindAction("Vertical Axis", throwIfNotFound: true);
+        m_General_Player1_HorizontalAxis = m_General.FindAction("Player1_Horizontal Axis", throwIfNotFound: true);
+        m_General_Player1_VerticalAxis = m_General.FindAction("Player1_Vertical Axis", throwIfNotFound: true);
+        m_General_Player2_HorizontalAxis = m_General.FindAction("Player2_Horizontal Axis", throwIfNotFound: true);
+        m_General_Player2_VerticalAxis = m_General.FindAction("Player2_Vertical Axis", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -181,14 +267,18 @@ public partial class @GGJ2023InputActions : IInputActionCollection2, IDisposable
     // General
     private readonly InputActionMap m_General;
     private IGeneralActions m_GeneralActionsCallbackInterface;
-    private readonly InputAction m_General_HorizontalAxis;
-    private readonly InputAction m_General_VerticalAxis;
+    private readonly InputAction m_General_Player1_HorizontalAxis;
+    private readonly InputAction m_General_Player1_VerticalAxis;
+    private readonly InputAction m_General_Player2_HorizontalAxis;
+    private readonly InputAction m_General_Player2_VerticalAxis;
     public struct GeneralActions
     {
         private @GGJ2023InputActions m_Wrapper;
         public GeneralActions(@GGJ2023InputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @HorizontalAxis => m_Wrapper.m_General_HorizontalAxis;
-        public InputAction @VerticalAxis => m_Wrapper.m_General_VerticalAxis;
+        public InputAction @Player1_HorizontalAxis => m_Wrapper.m_General_Player1_HorizontalAxis;
+        public InputAction @Player1_VerticalAxis => m_Wrapper.m_General_Player1_VerticalAxis;
+        public InputAction @Player2_HorizontalAxis => m_Wrapper.m_General_Player2_HorizontalAxis;
+        public InputAction @Player2_VerticalAxis => m_Wrapper.m_General_Player2_VerticalAxis;
         public InputActionMap Get() { return m_Wrapper.m_General; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -198,29 +288,43 @@ public partial class @GGJ2023InputActions : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_GeneralActionsCallbackInterface != null)
             {
-                @HorizontalAxis.started -= m_Wrapper.m_GeneralActionsCallbackInterface.OnHorizontalAxis;
-                @HorizontalAxis.performed -= m_Wrapper.m_GeneralActionsCallbackInterface.OnHorizontalAxis;
-                @HorizontalAxis.canceled -= m_Wrapper.m_GeneralActionsCallbackInterface.OnHorizontalAxis;
-                @VerticalAxis.started -= m_Wrapper.m_GeneralActionsCallbackInterface.OnVerticalAxis;
-                @VerticalAxis.performed -= m_Wrapper.m_GeneralActionsCallbackInterface.OnVerticalAxis;
-                @VerticalAxis.canceled -= m_Wrapper.m_GeneralActionsCallbackInterface.OnVerticalAxis;
+                @Player1_HorizontalAxis.started -= m_Wrapper.m_GeneralActionsCallbackInterface.OnPlayer1_HorizontalAxis;
+                @Player1_HorizontalAxis.performed -= m_Wrapper.m_GeneralActionsCallbackInterface.OnPlayer1_HorizontalAxis;
+                @Player1_HorizontalAxis.canceled -= m_Wrapper.m_GeneralActionsCallbackInterface.OnPlayer1_HorizontalAxis;
+                @Player1_VerticalAxis.started -= m_Wrapper.m_GeneralActionsCallbackInterface.OnPlayer1_VerticalAxis;
+                @Player1_VerticalAxis.performed -= m_Wrapper.m_GeneralActionsCallbackInterface.OnPlayer1_VerticalAxis;
+                @Player1_VerticalAxis.canceled -= m_Wrapper.m_GeneralActionsCallbackInterface.OnPlayer1_VerticalAxis;
+                @Player2_HorizontalAxis.started -= m_Wrapper.m_GeneralActionsCallbackInterface.OnPlayer2_HorizontalAxis;
+                @Player2_HorizontalAxis.performed -= m_Wrapper.m_GeneralActionsCallbackInterface.OnPlayer2_HorizontalAxis;
+                @Player2_HorizontalAxis.canceled -= m_Wrapper.m_GeneralActionsCallbackInterface.OnPlayer2_HorizontalAxis;
+                @Player2_VerticalAxis.started -= m_Wrapper.m_GeneralActionsCallbackInterface.OnPlayer2_VerticalAxis;
+                @Player2_VerticalAxis.performed -= m_Wrapper.m_GeneralActionsCallbackInterface.OnPlayer2_VerticalAxis;
+                @Player2_VerticalAxis.canceled -= m_Wrapper.m_GeneralActionsCallbackInterface.OnPlayer2_VerticalAxis;
             }
             m_Wrapper.m_GeneralActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @HorizontalAxis.started += instance.OnHorizontalAxis;
-                @HorizontalAxis.performed += instance.OnHorizontalAxis;
-                @HorizontalAxis.canceled += instance.OnHorizontalAxis;
-                @VerticalAxis.started += instance.OnVerticalAxis;
-                @VerticalAxis.performed += instance.OnVerticalAxis;
-                @VerticalAxis.canceled += instance.OnVerticalAxis;
+                @Player1_HorizontalAxis.started += instance.OnPlayer1_HorizontalAxis;
+                @Player1_HorizontalAxis.performed += instance.OnPlayer1_HorizontalAxis;
+                @Player1_HorizontalAxis.canceled += instance.OnPlayer1_HorizontalAxis;
+                @Player1_VerticalAxis.started += instance.OnPlayer1_VerticalAxis;
+                @Player1_VerticalAxis.performed += instance.OnPlayer1_VerticalAxis;
+                @Player1_VerticalAxis.canceled += instance.OnPlayer1_VerticalAxis;
+                @Player2_HorizontalAxis.started += instance.OnPlayer2_HorizontalAxis;
+                @Player2_HorizontalAxis.performed += instance.OnPlayer2_HorizontalAxis;
+                @Player2_HorizontalAxis.canceled += instance.OnPlayer2_HorizontalAxis;
+                @Player2_VerticalAxis.started += instance.OnPlayer2_VerticalAxis;
+                @Player2_VerticalAxis.performed += instance.OnPlayer2_VerticalAxis;
+                @Player2_VerticalAxis.canceled += instance.OnPlayer2_VerticalAxis;
             }
         }
     }
     public GeneralActions @General => new GeneralActions(this);
     public interface IGeneralActions
     {
-        void OnHorizontalAxis(InputAction.CallbackContext context);
-        void OnVerticalAxis(InputAction.CallbackContext context);
+        void OnPlayer1_HorizontalAxis(InputAction.CallbackContext context);
+        void OnPlayer1_VerticalAxis(InputAction.CallbackContext context);
+        void OnPlayer2_HorizontalAxis(InputAction.CallbackContext context);
+        void OnPlayer2_VerticalAxis(InputAction.CallbackContext context);
     }
 }
