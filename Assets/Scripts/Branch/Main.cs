@@ -30,6 +30,24 @@ namespace GlobalGameJam2023
             Player2
         }
 
+        [SerializeField] private string Player1LayerMask;
+        [SerializeField] private string Player2LayerMask;
+
+        public int GetOtherPlayerLayerMask(Player player)
+        {
+            string layerMaskName = "";
+            switch (player)
+            {
+                case Player.Player1:
+                    layerMaskName = Player2LayerMask;
+                    break;
+                case Player.Player2:
+                    layerMaskName = Player1LayerMask;
+                    break;
+            }
+            return LayerMask.NameToLayer(layerMaskName);
+        }
+
         public Tree GetTree(Player player)
         {
             switch (player)
