@@ -33,7 +33,7 @@ namespace GlobalGameJam2023
         private Vector3 _lastPlacedPosition;
         private Quaternion _lastPlacedRotation;
 
-        private BranchRenderer _branchRenderer;
+        public BranchRenderer _branchRenderer;
 
         public float KillingTime;
 
@@ -141,7 +141,7 @@ namespace GlobalGameJam2023
             newBranchControllerGameObject.transform.rotation = _lastPlacedRotation;
             newBranchControllerGameObject.transform.Rotate(transform.forward, (Random.Range(0, 1) == 1 ? -1 : 1) * Random.Range(MinRandomRotationDegreesOnBranchOff, MaxRandomRotationDegreesOnBranchOff));
 
-            Main.Instance.PlayersData[Player].BranchCount++;
+            Main.Instance.PlayersData[Player].AddBranch(this);
 
             Branch newBranchController = newBranchControllerGameObject.GetComponent<Branch>();
             newBranchController.Player = Player;
@@ -201,10 +201,7 @@ namespace GlobalGameJam2023
 
         public void DestroyBranch()
         {
-            Main.Instance.PlayersData[Player].BranchCount--;
-            Main.Instance.PlayersData[Player].InstantiateIfNeeded();
-            Destroy(_branchRenderer.gameObject);
-            Destroy(gameObject);
+            Main.Instance.PlayersData[Player].RemoveBranch(this);
         }
 
         private void OnDrawGizmos()

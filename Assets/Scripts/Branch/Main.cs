@@ -18,8 +18,8 @@ namespace GlobalGameJam2023
         private float _player2HorizontalInput = 0f;
         private float _player2VerticalInput = 0f;
 
-        public GameObject BranchControllerPrefab;
-        public GameObject TargetTransformPrefab;
+        //public GameObject BranchControllerPrefab;
+        //public GameObject TargetTransformPrefab;
 
         [SerializeField] private Tree _player1Tree;
         [SerializeField] private Tree _player2Tree;
@@ -35,29 +35,39 @@ namespace GlobalGameJam2023
 
         public class PlayerData
         {
-            private int _branchCount;
-            public int BranchCount
-            {
-                get => _branchCount;
-                set
-                {
-                    _branchCount = value;
-                    
-                }
-            }
             public Tree Tree;
             public GameObject BranchPrefab;
 
-            public void InstantiateIfNeeded()
-            {
-                if (BranchCount < 1)
-                {
-                    // Spawn a new branch at the tree
+            public List<Branch> Branches = new List<Branch>();
 
-                    GameObject newBranchControllerGameObject = Instantiate(BranchPrefab, null, false);
-                    newBranchControllerGameObject.transform.position = Tree.transform.position;
-                    BranchCount++;
+            public void AddBranch(Branch branch)
+            {
+                Branches.Add(branch);
+            }
+
+            public void InstantiateBranch()
+            {
+                GameObject newBranchControllerGameObject = Instantiate(BranchPrefab, null, false);
+                newBranchControllerGameObject.transform.position = Tree.transform.position;
+                Branch branch = newBranchControllerGameObject.GetComponent<Branch>();
+                AddBranch(branch);
+                Debug.Log(Branches.Count);
+            }
+
+            public void RemoveBranch(Branch branch)
+            {
+                Debug.Log(branch);
+                Debug.Log(Branches.Count);
+                Branches.Remove(branch);
+                Debug.Log(Branches.Count);
+
+                if (Branches.Count == 0)
+                {
+                    InstantiateBranch();
                 }
+
+                Destroy(branch._branchRenderer.gameObject);
+                Destroy(branch.gameObject);
             }
         }
 
@@ -122,7 +132,6 @@ namespace GlobalGameJam2023
                     new PlayerData()
                     {
                         Tree = _player1Tree,
-                        BranchCount = 0,
                         BranchPrefab = _player1BranchPrefab
                     }
                 },
@@ -131,11 +140,13 @@ namespace GlobalGameJam2023
                     new PlayerData()
                     {
                         Tree = _player2Tree,
-                        BranchCount = 0,
                         BranchPrefab = _player2BranchPrefab
                     }
                 }
             };
+
+            PlayersData[Player.Player1].InstantiateBranch();
+            PlayersData[Player.Player2].InstantiateBranch();
 
             if (_ggj2023InputActions == null)
             {
@@ -148,7 +159,6 @@ namespace GlobalGameJam2023
 
         void GGJ2023InputActions.IGeneralActions.OnPlayer1_HorizontalAxis(InputAction.CallbackContext context)
         {
-            Debug.Log("Works");
             _player1HorizontalInput = context.ReadValue<float>();
         }
 
