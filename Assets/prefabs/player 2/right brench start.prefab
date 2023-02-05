@@ -160,8 +160,8 @@ MonoBehaviour:
   endWidth: 0.18
   startWidth: 0.07
   minVertexDistance: 0.3
-  color: {r: 0, g: 0.8867924, b: 0.09146409, a: 1}
-  color2: {r: 0, g: 0.7169812, b: 0.017377585, a: 1}
+  color: {r: 0.6132076, g: 0.26285127, b: 0, a: 1}
+  color2: {r: 0.6415094, g: 0.42472786, b: 0.24510503, a: 1}
 --- !u!1 &7408022732449391310
 GameObject:
   m_ObjectHideFlags: 0
