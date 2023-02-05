@@ -24,11 +24,44 @@ namespace GlobalGameJam2023
         [SerializeField] private Tree _player1Tree;
         [SerializeField] private Tree _player2Tree;
 
+        public GameObject _player1BranchPrefab;
+        public GameObject _player2BranchPrefab;
+
         public enum Player
         {
             Player1,
             Player2
         }
+
+        public class PlayerData
+        {
+            private int _branchCount;
+            public int BranchCount
+            {
+                get => _branchCount;
+                set
+                {
+                    _branchCount = value;
+                    
+                }
+            }
+            public Tree Tree;
+            public GameObject BranchPrefab;
+
+            public void InstantiateIfNeeded()
+            {
+                if (BranchCount < 1)
+                {
+                    // Spawn a new branch at the tree
+
+                    GameObject newBranchControllerGameObject = Instantiate(BranchPrefab, null, false);
+                    newBranchControllerGameObject.transform.position = Tree.transform.position;
+                    BranchCount++;
+                }
+            }
+        }
+
+        public Dictionary<Player, PlayerData> PlayersData;
 
         [SerializeField] private string Player1LayerMask;
         [SerializeField] private string Player2LayerMask;
@@ -46,19 +79,6 @@ namespace GlobalGameJam2023
                     break;
             }
             return LayerMask.NameToLayer(layerMaskName);
-        }
-
-        public Tree GetTree(Player player)
-        {
-            switch (player)
-            {
-                case Player.Player1:
-                    return _player1Tree;
-                case Player.Player2:
-                    return _player2Tree;
-                default:
-                    return null;
-            }
         }
 
         public float GetHorizontal(Player player)
@@ -95,6 +115,28 @@ namespace GlobalGameJam2023
 
         private void Start()
         {
+            PlayersData = new Dictionary<Player, PlayerData>()
+            {
+                {
+                    Player.Player1,
+                    new PlayerData()
+                    {
+                        Tree = _player1Tree,
+                        BranchCount = 0,
+                        BranchPrefab = _player1BranchPrefab
+                    }
+                },
+                {
+                    Player.Player2,
+                    new PlayerData()
+                    {
+                        Tree = _player2Tree,
+                        BranchCount = 0,
+                        BranchPrefab = _player2BranchPrefab
+                    }
+                }
+            };
+
             if (_ggj2023InputActions == null)
             {
                 _ggj2023InputActions = new GGJ2023InputActions();
@@ -106,6 +148,7 @@ namespace GlobalGameJam2023
 
         void GGJ2023InputActions.IGeneralActions.OnPlayer1_HorizontalAxis(InputAction.CallbackContext context)
         {
+            Debug.Log("Works");
             _player1HorizontalInput = context.ReadValue<float>();
         }
 

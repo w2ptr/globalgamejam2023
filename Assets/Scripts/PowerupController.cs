@@ -22,6 +22,7 @@ public class PowerupController : MonoBehaviour
             PowerupType.AddWater,
             PowerupType.DestroyBranch,
             PowerupType.SplitBranch,
+            PowerupType.KillOtherBranch
         };
     }
 

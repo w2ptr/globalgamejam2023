@@ -12,7 +12,7 @@ namespace GlobalGameJam2023
             SplitBranch,
             AddWater,
             DestroyBranch,
-            KillOtherBranch,
+            KillOtherBranch
         }
 
         public PowerupType Type;

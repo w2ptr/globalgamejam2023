@@ -37,6 +37,8 @@ namespace GlobalGameJam2023
 
         public float CurveScaleOffset = 1.0f;
 
+        public Branch AssociatedBranch;
+
         /// <summary>
         /// To make sure the InserPointAt doesn't fail (Point too close to neighbour error)
         /// </summary>

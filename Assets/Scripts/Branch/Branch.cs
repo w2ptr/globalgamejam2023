@@ -35,8 +35,25 @@ namespace GlobalGameJam2023
 
         private BranchRenderer _branchRenderer;
 
+        public float KillingTime;
+
+        [SerializeField] private Material _killingMaterial;
+        private Material _normalMaterial;
+
+        private bool __killingMode = false;
+        private bool _killingMode
+        {
+            get => __killingMode;
+            set
+            {
+                __killingMode = value;
+                GetComponent<Renderer>().material = __killingMode ? _killingMaterial : _normalMaterial;
+            }
+        }
+
         private void Start()
         {
+            _normalMaterial = GetComponent<Renderer>().material;
             InstantiateBranchRenderer();
         }
 
@@ -45,6 +62,7 @@ namespace GlobalGameJam2023
             GameObject instantiatedBranchRendererGameObject = Instantiate(_branchRendererPrefab, null, false);
             _branchRenderer = instantiatedBranchRendererGameObject.GetComponent<BranchRenderer>();
 
+            _branchRenderer.AssociatedBranch = this;
             _branchRenderer.Points.Clear();
 
             _lastPlacedPosition = transform.position;
@@ -121,7 +139,9 @@ namespace GlobalGameJam2023
             GameObject newBranchControllerGameObject = Instantiate(gameObject, null, false);
             newBranchControllerGameObject.transform.position = _lastPlacedPosition;
             newBranchControllerGameObject.transform.rotation = _lastPlacedRotation;
-            newBranchControllerGameObject.transform.Rotate(transform.forward, Random.Range(0, 1) == 1 ? -1 : 1 * Random.Range(MinRandomRotationDegreesOnBranchOff, MaxRandomRotationDegreesOnBranchOff));
+            newBranchControllerGameObject.transform.Rotate(transform.forward, (Random.Range(0, 1) == 1 ? -1 : 1) * Random.Range(MinRandomRotationDegreesOnBranchOff, MaxRandomRotationDegreesOnBranchOff));
+
+            Main.Instance.PlayersData[Player].BranchCount++;
 
             Branch newBranchController = newBranchControllerGameObject.GetComponent<Branch>();
             newBranchController.Player = Player;
@@ -131,8 +151,22 @@ namespace GlobalGameJam2023
         {
             if (collision.collider.gameObject.layer == Main.Instance.GetOtherPlayerLayerMask(Player))
             {
-                //DestroyBranch();
+                DestroyBranch();
                 Debug.Log("Bumped into other player");
+            }
+
+            if (collision.collider.TryGetComponent<BranchRenderer>(out BranchRenderer branchRenderer))
+            {
+                if (_killingMode)
+                {
+                    // collided with
+                    if (branchRenderer.AssociatedBranch != null)
+                    {
+                        branchRenderer.AssociatedBranch.DestroyBranch();
+                        _killingMode = false;
+                        StopAllCoroutines();
+                    }
+                }
             }
 
             if (collision.collider.TryGetComponent<Powerup>(out Powerup powerup))
@@ -143,11 +177,15 @@ namespace GlobalGameJam2023
                         BranchOff();
                         break;
                     case Powerup.PowerupType.AddWater:
-                        Tree tree = Main.Instance.GetTree(Player);
+                        Tree tree = Main.Instance.PlayersData[Player].Tree;
                         tree.AddWater();
                         break;
                     case Powerup.PowerupType.DestroyBranch:
                         DestroyBranch();
+                        break;
+                    case Powerup.PowerupType.KillOtherBranch:
+                        _killingMode = true;
+                        StartCoroutine(StopKilling());
                         break;
                 }
 
@@ -155,10 +193,18 @@ namespace GlobalGameJam2023
             }
         }
 
-        private void DestroyBranch()
+        private IEnumerator StopKilling()
         {
-            Destroy(gameObject);
+            yield return new WaitForSeconds(KillingTime);
+            _killingMode = false;
+        }
+
+        public void DestroyBranch()
+        {
+            Main.Instance.PlayersData[Player].BranchCount--;
+            Main.Instance.PlayersData[Player].InstantiateIfNeeded();
             Destroy(_branchRenderer.gameObject);
+            Destroy(gameObject);
         }
 
         private void OnDrawGizmos()
