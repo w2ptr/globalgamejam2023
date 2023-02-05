@@ -197,7 +197,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: eef9228ce72f59846a6e5cc49cb95c69, type: 2}
+  - {fileID: 2100000, guid: 66852a2b407d01940b9b577f770d656a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -428,7 +428,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: eef9228ce72f59846a6e5cc49cb95c69, type: 2}
+  - {fileID: 2100000, guid: 66852a2b407d01940b9b577f770d656a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -547,7 +547,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: eef9228ce72f59846a6e5cc49cb95c69, type: 2}
+  - {fileID: 2100000, guid: 66852a2b407d01940b9b577f770d656a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1134,6 +1134,8 @@ MonoBehaviour:
   endWidth: 0.18
   startWidth: 0.07
   minVertexDistance: 0.3
+  color: {r: 0.069504015, g: 0.7169812, b: 0, a: 1}
+  color2: {r: 0.13607128, g: 1, b: 0.015686274, a: 1}
 --- !u!1 &456446839
 GameObject:
   m_ObjectHideFlags: 0
@@ -1502,7 +1504,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: eef9228ce72f59846a6e5cc49cb95c69, type: 2}
+  - {fileID: 2100000, guid: 375c24d122428f2439831785e4c1bb75, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2759,7 +2761,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: eef9228ce72f59846a6e5cc49cb95c69, type: 2}
+  - {fileID: 2100000, guid: 375c24d122428f2439831785e4c1bb75, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3198,7 +3200,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: eef9228ce72f59846a6e5cc49cb95c69, type: 2}
+  - {fileID: 2100000, guid: 375c24d122428f2439831785e4c1bb75, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3492,6 +3494,8 @@ MonoBehaviour:
   endWidth: 0.18
   startWidth: 0.07
   minVertexDistance: 0.3
+  color: {r: 1, g: 0.95602494, b: 0.4481132, a: 1}
+  color2: {r: 1, g: 0.7766841, b: 0.015686274, a: 1}
 --- !u!1001 &1720126389
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -30,6 +30,12 @@ public class RootController : MonoBehaviour
     private float timeSnap;
     private Vector3 startPosition;
 
+    public Color color = Color.yellow;
+    private Vector3 tempHSV;
+
+    public Color color2 = Color.yellow;
+    private Vector3 tempHSV2;
+
     void Start()
     {
         startPosition = transform.position;
@@ -57,8 +63,23 @@ public class RootController : MonoBehaviour
             trailComp.material = trailMaterial;
             // Add color gradient so that end is more dark. Definitely set min, max values, so that it's not too dark altogether.
             // TODO ADD THE POSSIBLE COLORS
-            trailComp.startColor = Random.ColorHSV(0.043f, 0.09f, 0.9f, 1.0f);
-            trailComp.endColor = Random.ColorHSV(0.043f, 0.09f, 0.9f, 1.0f);
+
+
+            Color.RGBToHSV(color, out tempHSV.x, out tempHSV.y, out tempHSV.z);
+            tempHSV.x += Random.Range(-0.04f, 0.04f);
+            tempHSV.y += Random.Range(-0.04f, 0.04f);
+            tempHSV.z += Random.Range(-0.04f, 0.04f);
+
+
+            Color.RGBToHSV(color2, out tempHSV2.x, out tempHSV2.y, out tempHSV2.z);
+            tempHSV2.x += Random.Range(-0.04f, 0.04f);
+            tempHSV2.y += Random.Range(-0.04f, 0.04f);
+            tempHSV2.z += Random.Range(-0.04f, 0.04f);
+
+            color = Color.HSVToRGB(tempHSV.x, tempHSV.y, tempHSV.z);
+            color2 = Color.HSVToRGB(tempHSV2.x, tempHSV2.y, tempHSV2.z);
+            trailComp.startColor = color;//Random.ColorHSV(0.043f, 0.09f, 0.9f, 1.0f);
+            trailComp.endColor = color2;//Random.ColorHSV(0.043f, 0.09f, 0.9f, 1.0f);
             trailComp.minVertexDistance = minVertexDistance;
 
             trails.Add(trail);

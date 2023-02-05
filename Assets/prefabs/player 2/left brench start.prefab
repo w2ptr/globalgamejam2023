@@ -160,6 +160,8 @@ MonoBehaviour:
   endWidth: 0.18
   startWidth: 0.07
   minVertexDistance: 0.3
+  color: {r: 0, g: 0.8018868, b: 0.12853195, a: 1}
+  color2: {r: 0.050657313, g: 0.7830189, b: 0, a: 1}
 --- !u!1 &7408022732449391310
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,6 +214,7 @@ MonoBehaviour:
     type: 3}
   lastRoot: {fileID: 6958523899721280696}
   trailTarget: {fileID: 2097994440089272180}
+  disabled: 0
 --- !u!1001 &2166672818438559018
 PrefabInstance:
   m_ObjectHideFlags: 0
