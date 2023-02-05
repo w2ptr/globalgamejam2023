@@ -73,7 +73,7 @@ namespace GlobalGameJam2023
             // Update position of the target transform
             float speed = GrowthMetersPerSecond * deltaTimeSeconds;
             
-            float deltaLength = Main.Instance.GetVertical(Player) * speed;
+            float deltaLength = Mathf.Clamp(Main.Instance.GetVertical(Player), 0f, 1f) * speed;
 
             _branchLength += deltaLength;
             _distanceFromPreviousPoint += deltaLength;
@@ -131,7 +131,7 @@ namespace GlobalGameJam2023
         {
             if (collision.collider.gameObject.layer == Main.Instance.GetOtherPlayerLayerMask(Player))
             {
-                Destroy(gameObject);
+                //DestroyBranch();
                 Debug.Log("Bumped into other player");
             }
 
@@ -147,12 +147,18 @@ namespace GlobalGameJam2023
                         tree.AddWater();
                         break;
                     case Powerup.PowerupType.DestroyBranch:
-                        Destroy(gameObject);
+                        DestroyBranch();
                         break;
                 }
 
                 Destroy(powerup.gameObject);
             }
+        }
+
+        private void DestroyBranch()
+        {
+            Destroy(gameObject);
+            Destroy(_branchRenderer.gameObject);
         }
 
         private void OnDrawGizmos()
