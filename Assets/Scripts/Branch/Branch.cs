@@ -60,7 +60,7 @@ namespace GlobalGameJam2023
             // Update rotation of the target transform
             float turnSpeed = TurnSpeedDegreesPerSecond * deltaTimeSeconds;
             float angle = Main.Instance.GetHorizontal(Player) * turnSpeed;
-            transform.Rotate(Vector3.up, angle); // in degrees;
+            transform.Rotate(Vector3.back, angle); // in degrees;
 
             // Update position of the target transform
             float speed = GrowthMetersPerSecond * deltaTimeSeconds;
@@ -70,7 +70,7 @@ namespace GlobalGameJam2023
             _branchLength += deltaLength;
             _distanceFromPreviousPoint += deltaLength;
 
-            Vector3 direction = transform.forward;
+            Vector3 direction = transform.up;
             Vector3 deltaPosition = direction * deltaLength;
             transform.position = transform.position + deltaPosition;
 
@@ -78,7 +78,7 @@ namespace GlobalGameJam2023
             int lastIndex = _branchRenderer.Points.Count -1;
             _branchRenderer.Points[lastIndex] = new BranchRenderer.Point()
             {
-                Position = transform.position + transform.forward,
+                Position = transform.position + transform.up * 0.1f,
                 Width = 0.5f
             };
             _branchRenderer.Points[lastIndex-1] = new BranchRenderer.Point()
